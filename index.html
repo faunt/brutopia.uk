@@ -14,13 +14,13 @@
   <style>
     :root{
       /* Yellowed-magazine palette */
-      --ink: #11110f;             /* soot */
-      --paper: #f3eddc;           /* aged cream */
-      --newsprint: #e7dfc7;       /* lighter cream */
-      --nicotine: #d4b85a;        /* yellowed edge */
-      --tomato: #d64f3a;          /* print red */
-      --cyan: #2ca6a4;            /* print cyan */
-      --inkblue:#0f2b46;          /* deep blue-black */
+      --ink: #11110f;
+      --paper: #f3eddc;
+      --newsprint: #e7dfc7;
+      --nicotine: #d4b85a;
+      --tomato: #d64f3a;
+      --cyan: #2ca6a4;
+      --inkblue:#0f2b46;
 
       --bg: var(--paper);
       --maxw: 74rem; --pad: clamp(16px,2.5vw,28px); --radius: 20px;
@@ -31,7 +31,6 @@
     a{color:inherit}
     .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
 
-    /* Section tones inspired by aged print */
     section{padding:clamp(56px,9vw,120px) 0;position:relative}
     .tone-paper{background:var(--paper)}
     .tone-news{background:var(--newsprint)}
@@ -39,9 +38,7 @@
     .tone-tomato{background:linear-gradient(180deg,#ffe7e2,#ffd8d2)}
     .tone-ink{background:linear-gradient(180deg,#131313,#1a1a1a);color:#f7f6f2}
 
-    /* Torn divider using mask */
-    .torn{--edge: radial-gradient(14px 12px at 12px 12px, #000 60%, transparent 61%) ;
-      position:relative;}
+    .torn{--edge: radial-gradient(14px 12px at 12px 12px, #000 60%, transparent 61%) ; position:relative;}
     .torn::before{content:"";position:absolute;left:0;right:0;top:-18px;height:18px;background:var(--bg);
       -webkit-mask: repeating-linear-gradient(90deg, #000 0 24px, transparent 24px 48px), var(--edge);
       mask: repeating-linear-gradient(90deg, #000 0 24px, transparent 24px 48px), var(--edge);
@@ -68,12 +65,10 @@
     .card{background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.02));border:1px dashed rgba(0,0,0,.25);padding:clamp(18px,3vw,28px);border-radius:var(--radius)}
     .card.dark{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border:1px dashed rgba(255,255,255,.35)}
 
-    /* Parallax + collage look */
     .parallax-scene{position:absolute;inset:0;pointer-events:none}
     .layer{position:absolute;will-change:transform;filter:drop-shadow(0 12px 24px rgba(0,0,0,.35));mix-blend-mode:multiply}
     .layer img{display:block;width:min(42vw,540px);max-width:90vw;height:auto}
 
-    /* CTA band */
     .cta-band{display:grid;place-items:center;text-align:center;padding:42px 0}
     .cta-band .btn{background:#d64f3a;border-color:#7a2b21;box-shadow:0 6px 0 #a63c2e;color:#fff}
 
@@ -94,8 +89,12 @@
       </div>
     </div>
 
-    <!-- Parallax layers: more overlap, rotation & varied speeds -->
+    <!-- Parallax layers -->
     <div class="parallax-scene" aria-hidden="true">
+      <!-- Featured Brutopia image -->
+      <div class="layer" data-speed="0.30" data-rotate="0.10" style="top:25%; left:50%; transform:translateX(-50%); z-index:10">
+        <img src="img/brutopia.png" alt="Brutopia collage logo"/>
+      </div>
       <div class="layer" data-speed="0.10" data-rotate="-0.02" style="top:6%; left:4%; z-index:1"><img src="img/rainbow.png" alt="Rainbow collage"/></div>
       <div class="layer" data-speed="0.44" data-rotate="0.05" style="bottom:8%; left:30%; z-index:4"><img src="img/california.png" alt="California collage"/></div>
       <div class="layer" data-speed="0.28" data-rotate="-0.03" style="top:24%; left:16%; z-index:3"><img src="img/beez.png" alt="Beekeeper"/></div>
@@ -115,7 +114,7 @@
       <div class="wrap grid two">
         <div class="card">
           <h2>Bruton is our home</h2>
-          <p>Bruton is our home — the sum of our collective experiences, whatever they may be. But there’s a parallel reality: an island paradise hailed as the new Notting Hill; a playground of the rich and famous; a high street idling with Lamborghinis and Range Rovers; mouth‑watering culinary delights at every turn.</p>
+          <p>Bruton is our home — the sum of our collective experiences, whatever they may be. But there’s a parallel reality: an island paradise hailed as the new Notting Hill; a playground of the rich and famous; a high street idling with Lamborghinis and Range Rovers; mouth-watering culinary delights at every turn.</p>
           <p>This exhibition holds the two at once: the reality and the illusion, the utopia and the dystopia — and asks, <em>what really is the island paradise of Brutopia?</em></p>
         </div>
         <div class="card">
