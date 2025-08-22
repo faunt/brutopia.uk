@@ -8,15 +8,15 @@
   <meta property="og:title" content="Brutopia — A True Island Paradise" />
   <meta property="og:description" content="An open call to play with Bruton’s parallel reality: utopia vs. dystopia." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="/og-image.jpg" />
+  <meta property="og:image" content="brutopia.uk/img/brutopia.png" />
   <meta name="theme-color" content="#0A0A0A" />
-  <link rel="icon" href="/favicon.svg" />
+  <link rel="icon" href="brutopia.uk/img/brutopia.png" />
   <style>
     :root {
       --bg: #0a0a0a;
       --ink: #f5f5f2;
       --muted: #bdbdb7;
-      --accent: #ffde59; /* can be replaced with artwork palette later */
+      --accent: #ffde59;
       --maxw: 74rem;
       --pad: clamp(16px, 2.5vw, 28px);
       --radius: 20px;
@@ -25,155 +25,66 @@
     html, body { height: 100%; }
     body {
       margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
       color: var(--ink);
       background: var(--bg);
       line-height: 1.45;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
     }
-    a { color: inherit; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 2px; }
     .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad); }
-    header {
-      position: relative; overflow: clip;
-      min-height: 92vh; display: grid; place-items: center; text-align: center;
-    }
-    .badge { display:inline-block; padding: 6px 10px; border:1px solid currentColor; border-radius: 999px; font-size: 12px; letter-spacing:.04em; text-transform: uppercase; color: var(--muted); }
-    .title { font-size: clamp(40px, 10vw, 140px); font-weight: 800; line-height: .9; margin: 18px 0; letter-spacing:-.01em; }
+    header { min-height: 92vh; display: grid; place-items: center; text-align: center; position:relative; }
+    .title { font-size: clamp(40px, 10vw, 140px); font-weight: 800; margin: 18px 0; line-height: .9; }
     .subtitle { font-size: clamp(18px, 3vw, 26px); color: var(--muted); max-width: 40ch; margin: 0 auto 20px; }
-    .cta-row { display:flex; gap: 12px; justify-content:center; flex-wrap:wrap; margin-top: 14px; }
-    .btn {
-      appearance:none; border:1px solid currentColor; color: var(--bg); background: var(--ink);
-      padding: 12px 16px; border-radius: 14px; font-weight: 600; cursor: pointer; transition: transform .08s ease, background .2s ease;
-    }
-    .btn.secondary { background: transparent; color: var(--ink); }
-    .btn:hover { transform: translateY(-1px); }
-
-    /* Parallax staging area */
-    .parallax-scene { position:absolute; inset:0; pointer-events:none; }
-    .layer { position:absolute; will-change: transform; }
-    .layer img { display:block; width: min(40vw, 520px); max-width: 90vw; height: auto; filter: drop-shadow(0 12px 24px rgba(0,0,0,.35)); }
-
-    /* Collage looks — tweak per asset */
-    .cut { image-rendering: auto; }
-    .zine { filter: grayscale(100%) contrast(1.2) brightness(1.05); mix-blend-mode: multiply; }
-    .halftone { filter: contrast(1.15) saturate(0.9); mix-blend-mode: multiply; }
-    .duo { filter: grayscale(100%) contrast(1.2); }
-    .duo.yellow { filter: grayscale(100%) contrast(1.15) sepia(1) hue-rotate(-20deg) saturate(3); mix-blend-mode: screen; opacity: .9; }
-    .duo.cyan { filter: grayscale(100%) contrast(1.15) hue-rotate(180deg) saturate(2); mix-blend-mode: screen; opacity: .85; }
-
-    /* Sections */
+    .btn { background: var(--ink); color: var(--bg); padding: 12px 16px; border-radius: 14px; font-weight: 600; }
     section { padding: clamp(56px, 9vw, 120px) 0; border-top: 1px solid rgba(255,255,255,.06); }
     h2 { font-size: clamp(28px, 4.2vw, 56px); line-height: 1.05; margin: 0 0 16px; }
-    p, li { font-size: clamp(16px, 1.4vw, 20px); color: var(--ink); }
-    .muted { color: var(--muted); }
-    .grid { display:grid; gap: clamp(18px, 3vw, 28px); grid-template-columns: 1fr; }
-    @media (min-width: 840px) { .grid.two { grid-template-columns: 1.3fr .9fr; } }
-
-    .card { background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); padding: clamp(18px, 3vw, 28px); border-radius: var(--radius); }
-    .quote { font-size: clamp(18px, 2.2vw, 28px); line-height: 1.3; }
-
-    /* Prompts list */
-    .prompt-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
-    .prompt-list li { padding: 14px 16px; border: 1px dashed rgba(255,255,255,.22); border-radius: 12px; background: rgba(255,255,255,.03); }
-
-    /* Submission section */
-    .sub-grid { display:grid; gap: 16px; grid-template-columns: 1fr; }
-    @media (min-width: 900px) { .sub-grid { grid-template-columns: 1.2fr .8fr; } }
-
-    .form { display: grid; gap: 12px; }
-    .input, textarea { width: 100%; padding: 12px 14px; border-radius: 12px; border:1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.06); color: var(--ink); font-size: 16px; }
-    textarea { min-height: 140px; resize: vertical; }
-
-    .foot { padding: 38px 0 80px; color: var(--muted); text-align: center; font-size: 14px; }
-
-    /* Accessibility: reduce motion disables parallax */
-    @media (prefers-reduced-motion: reduce) {
-      .layer { transform: none !important; }
-    }
+    p { font-size: clamp(16px, 1.4vw, 20px); color: var(--ink); }
   </style>
 </head>
 <body>
   <header>
     <div class="wrap">
-      <span class="badge">Open call</span>
       <h1 class="title">Brutopia</h1>
-      <p class="subtitle">A true island paradise — and its parallel reality. Utopia in one eye, dystopia in the other. Bring a quip, drawing, advert, song, or something stranger.</p>
-      <div class="cta-row">
-        <a class="btn" href="#contribute">Contribute</a>
-        <a class="btn secondary" href="#about">About</a>
-      </div>
+      <p class="subtitle">A true island paradise — and its parallel reality. Utopia in one eye, dystopia in the other.</p>
+      <a class="btn" href="#contribute">Contribute</a>
     </div>
-
-    <!-- Parallax layers (replace src with real cutouts). Position via inline styles. -->
+    <!-- Collage layers -->
     <div class="parallax-scene" aria-hidden="true">
-      <!-- Replace src paths with your cut-outs. data-speed controls scroll rate. Lower = slower. -->
-
-      <!-- Dovecote tower (halftone scan) -->
-      <div class="layer" data-speed="0.18" style="bottom:8%; left:6%; z-index: 2;">
-        <img class="cut halftone" src="/assets/collage/dovecote-halftone.png" alt="Halftone scan of Bruton Dovecote tower" />
-      </div>
-
-      <!-- Royal crown (Quinnell vibe) -->
-      <div class="layer" data-speed="0.32" style="top:10%; right:8%; rotate:-6deg; z-index: 3;">
-        <img class="cut" src="/assets/collage/kings-crown.png" alt="Cut-out king's crown" />
-      </div>
-
-      <!-- Corgis (two cut-outs for depth) -->
-      <div class="layer" data-speed="0.27" style="bottom:12%; right:18%; rotate:3deg; z-index: 3;">
-        <img class="cut" src="/assets/collage/corgi-1.png" alt="Corgi cut-out" />
-      </div>
-      <div class="layer" data-speed="0.22" style="bottom:18%; right:6%; rotate:-4deg; z-index: 1;">
-        <img class="cut" src="/assets/collage/corgi-2.png" alt="Second corgi cut-out" />
-      </div>
-
-      <!-- Photocopied zine-style cow -->
-      <div class="layer" data-speed="0.26" style="top:22%; left:22%; rotate:2deg; z-index: 2;">
-        <img class="cut zine" src="/assets/collage/zine-cow.png" alt="Photocopied zine-style cow" />
-      </div>
-
-      <!-- Vintage Range Rover (1970s/80s boxy) -->
-      <div class="layer" data-speed="0.38" style="bottom:10%; left:38%; rotate:-2deg; z-index: 4;">
-        <img class="cut" src="/assets/collage/vintage-range-rover.png" alt="Vintage Range Rover cut-out" />
-      </div>
-
-      <!-- Torn paper textures for depth -->
-      <div class="layer" data-speed="0.12" style="top:6%; left:8%; z-index:0;">
-        <img class="cut duo cyan" src="/assets/collage/torn-paper-01.png" alt="Cyan torn paper texture" />
-      </div>
-      <div class="layer" data-speed="0.16" style="top:30%; right:20%; z-index:0;">
-        <img class="cut duo yellow" src="/assets/collage/torn-paper-02.png" alt="Yellow torn paper texture" />
-      </div>
-
-      <!-- Moon / celestial wink to More's island religions -->
-      <div class="layer" data-speed="0.15" style="top:16%; right:34%; z-index:1;">
-        <img class="cut" src="/assets/collage/moon.png" alt="Cut-out moon" />
-      </div>
-
+      <div class="layer" data-speed="0.18" style="top:10%; left:8%"><img src="brutopia.uk/img/beez.png" alt="Beekeeper collage" /></div>
+      <div class="layer" data-speed="0.25" style="bottom:12%; right:10%"><img src="brutopia.uk/img/beggar.png" alt="Beggar collage" /></div>
+      <div class="layer" data-speed="0.22" style="top:30%; right:20%"><img src="brutopia.uk/img/bin.png" alt="Bin collage" /></div>
+      <div class="layer" data-speed="0.15" style="top:6%; left:20%"><img src="brutopia.uk/img/bull.png" alt="Bull collage" /></div>
+      <div class="layer" data-speed="0.35" style="bottom:8%; left:30%"><img src="brutopia.uk/img/california.png" alt="California collage" /></div>
+      <div class="layer" data-speed="0.38" style="bottom:10%; right:28%"><img src="brutopia.uk/img/car-halftone-small.png" alt="Halftone car collage" /></div>
+      <div class="layer" data-speed="0.2" style="top:18%; right:10%"><img src="brutopia.uk/img/dog.png" alt="Dog collage" /></div>
+      <div class="layer" data-speed="0.25" style="top:26%; left:40%"><img src="brutopia.uk/img/hair.png" alt="Hair collage" /></div>
+      <div class="layer" data-speed="0.16" style="bottom:16%; left:8%"><img src="brutopia.uk/img/rainbow.png" alt="Rainbow collage" /></div>
+      <div class="layer" data-speed="0.3" style="top:12%; right:30%"><img src="brutopia.uk/img/slides.png" alt="Slides collage" /></div>
+      <div class="layer" data-speed="0.12" style="bottom:20%; right:5%"><img src="brutopia.uk/img/utopia.jpeg" alt="Utopia collage" /></div>
     </div>
   </header>
 
   <main>
     <section id="about">
-      <div class="wrap grid two">
-        <div class="card">
-          <h2>Bruton, doubled</h2>
-          <p>Bruton is our home — the sum of our collective experiences, whatever they may be. But there’s a parallel reality: an island paradise hailed as the new Notting Hill; a playground of the rich and famous; a high street idling with Lamborghinis and Range Rovers; mouth‑watering culinary delights at every turn.</p>
-          <p>This exhibition holds the two at once: the reality and the illusion, the utopia and the dystopia — and asks, <em>what really is the island paradise of Brutopia?</em></p>
-        </div>
-        <div class="card">
-          <h2>From Utopia to Brutopia</h2>
-          <p class="muted">1516: Thomas More publishes <em>Utopia</em>, a satirical island where pleasure, virtue, and living according to nature are ideals. Multiple religions coexist; none is absolute. More popularised the habit of imagining parallel realities — but baked into every utopia is its shadow: the imperfect, the illusion.</p>
-          <p>Across the literature, two species recur: the carnival island (feast, drink, copulate), and the antiseptic island (streamlined, odorless, sensible). Somewhere between the fête and the lab lies Brutopia.</p>
-        </div>
+      <div class="wrap">
+        <h2>Bruton is our home</h2>
+        <p>Bruton is our home — the sum of our collective experiences, whatever they may be. But there’s a parallel reality: an island paradise hailed as the new Notting Hill; a playground of the rich and famous; a high street idling with Lamborghinis and Range Rovers; mouth‑watering culinary delights at every turn.</p>
+        <p>This exhibition holds the two at once: the reality and the illusion, the utopia and the dystopia — and asks, <em>what really is the island paradise of Brutopia?</em></p>
+      </div>
+    </section>
+
+    <section id="utopia">
+      <div class="wrap">
+        <h2>From Utopia to Brutopia</h2>
+        <p>1516: Thomas More publishes <em>Utopia</em>, a satirical island where pleasure, virtue, and living according to nature are ideals. Multiple religions coexist; none is absolute. More popularised the habit of imagining parallel realities — but baked into every utopia is its shadow: the imperfect, the illusion.</p>
+        <p>Across the literature, two species recur: the carnival island (feast, drink, copulate), and the antiseptic island (streamlined, odorless, sensible). Somewhere between the fête and the lab lies Brutopia.</p>
       </div>
     </section>
 
     <section id="prompts">
       <div class="wrap">
         <h2>Pick a thread, pull it</h2>
-        <p class="muted">Steal these prompts or ignore them entirely. There’s no right door into Brutopia.</p>
-        <ul class="prompt-list">
+        <p>Steal these prompts or ignore them entirely. There’s no right door into Brutopia.</p>
+        <ul>
           <li>What version of utopia is your Brutopia?</li>
           <li>What customs, practices, and values exist on the island paradise?</li>
           <li>What tensions live within Brutopia? Where does the gleam crack?</li>
@@ -183,119 +94,44 @@
     </section>
 
     <section id="invitation">
-      <div class="wrap grid two">
-        <div>
-          <h2>Invitation</h2>
-          <p>You don’t have to be an artist. You don’t have to be a philosopher. You don’t even need a finished idea of Brutopia. You just need a spark — a curiosity to explore a parallel reality with us.</p>
-          <p>Bring a quip, idea, drawing, joke, blockbuster, advert, song — or a format we haven’t met yet.</p>
-        </div>
-        <div class="card">
-          <p class="quote">“Every utopia contains a dystopia — the island paradise is always double.”</p>
-          <p class="muted">— working note</p>
-        </div>
+      <div class="wrap">
+        <h2>Invitation</h2>
+        <p>You don’t have to be an artist. You don’t have to be a philosopher. You don’t even need a finished idea of Brutopia. You just need a spark — a curiosity to explore a parallel reality with us.</p>
+        <p>Bring a quip, idea, drawing, joke, blockbuster, advert, song — or a format we haven’t met yet.</p>
       </div>
     </section>
 
     <section id="contribute">
-      <div class="wrap sub-grid">
-        <div>
-          <h2>Contribute to Brutopia</h2>
-          <p class="muted">Send a link, upload, or a rough sketch. We’ll be in touch.</p>
-
-          <!-- If hosting on Netlify, you can enable their free form handling by adding data-netlify="true" and a name attribute below. For pure GitHub Pages, consider Formspree or a mailto link. -->
-          <form class="form" name="brutopia-call" method="post" action="mailto:brutopia@yourdomain.example?subject=Brutopia%20Submission" enctype="text/plain">
-            <label>
-              Name
-              <input class="input" type="text" name="name" autocomplete="name" required />
-            </label>
-            <label>
-              Email
-              <input class="input" type="email" name="email" autocomplete="email" required />
-            </label>
-            <label>
-              Link to your contribution (URL)
-              <input class="input" type="url" name="link" placeholder="https://…" />
-            </label>
-            <label>
-              Notes (optional)
-              <textarea name="notes" placeholder="Tell us about your idea in a few lines"></textarea>
-            </label>
-            <button class="btn" type="submit">Send</button>
-            <p class="muted">Prefer email? Write to <a href="mailto:brutopia@yourdomain.example">brutopia@yourdomain.example</a>.</p>
-          </form>
-        </div>
-
-        <aside class="card">
-          <h2>Specs / Formats</h2>
-          <ul>
-            <li>Images: PNG/JPG (up to 5MB)</li>
-            <li>Short video: MP4/MOV (≤ 60s)</li>
-            <li>Text: up to 400 words</li>
-            <li>Audio: MP3/WAV (≤ 3 min)</li>
-          </ul>
-          <p class="muted">These are guidelines, not laws. Surprise us.</p>
-        </aside>
+      <div class="wrap">
+        <h2>Contribute to Brutopia</h2>
+        <p>Send a link, upload, or a rough sketch. We’ll be in touch.</p>
+        <p>Email: <a href="mailto:submit@brutopia.uk">submit@brutopia.uk</a></p>
       </div>
     </section>
 
     <section id="credits">
-      <div class="wrap grid two">
-        <div>
-          <h2>Credits</h2>
-          <p>Concept & curation: Tom <br/>Site draft & build: Dave</p>
-          <p class="muted">Featuring artwork and interventions by the people of Bruton (and beyond). Historic references to Thomas More’s <em>Utopia</em> (1516).</p>
-        </div>
-        <div class="card">
-          <h2>Press & Queries</h2>
-          <p>General: <a href="mailto:hello@brutopia.uk">hello@brutopia.uk</a></p>
-          <p>Submissions: <a href="mailto:submit@brutopia.uk">submit@brutopia.uk</a></p>
-        </div>
+      <div class="wrap">
+        <h2>Credits</h2>
+        <p>Concept & curation: Tom<br/>Site draft & build: Dave</p>
+        <p>Featuring artwork and interventions by the people of Bruton (and beyond). Historic references to Thomas More’s <em>Utopia</em> (1516).</p>
       </div>
     </section>
   </main>
 
-  <footer class="foot">
-    <div class="wrap">
-      <p>© <span id="year"></span> Brutopia. Built to be forked. <a href="#" aria-label="View source (link to GitHub repo)">Source</a></p>
-    </div>
+  <footer class="wrap" style="padding:40px 0; color:var(--muted); text-align:center;">
+    © <span id="year"></span> Brutopia
   </footer>
 
   <script>
-    // Set year
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Lightweight parallax: translates layers based on scroll position and a speed factor.
-    // Works best for assets with transparent backgrounds (PNGs/SVGs) placed around the hero.
-    (function() {
-      const layers = Array.from(document.querySelectorAll('.layer'));
-      if (!layers.length) return;
-
-      let y = 0, ticking = false;
-      const onScroll = () => {
-        y = window.scrollY || window.pageYOffset;
-        if (!ticking) {
-          window.requestAnimationFrame(() => {
-            layers.forEach(el => {
-              const speed = parseFloat(el.dataset.speed || '0.2');
-              // Translate on Y only; could expand to X later if desired
-              el.style.transform = `translate3d(0, ${y * speed}px, 0)`;
-            });
-            ticking = false;
-          });
-          ticking = true;
-        }
-      };
-
-      // Disable for reduced motion users
-      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-      if (reduced.matches) return;
-
-      window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
-    })();
-
-    // Reveal-on-scroll (subtle). IntersectionObserver to add a class if needed later.
-    // document.querySelectorAll('[data-reveal]').forEach(el => { /* optional */ });
+    const layers = document.querySelectorAll('.layer');
+    window.addEventListener('scroll', () => {
+      let y = window.scrollY;
+      layers.forEach(el => {
+        const speed = parseFloat(el.dataset.speed || '0.2');
+        el.style.transform = `translate3d(0, ${y * speed}px, 0)`;
+      });
+    });
   </script>
 </body>
 </html>
