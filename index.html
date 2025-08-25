@@ -446,6 +446,7 @@
       const lbClose = document.getElementById('lightboxClose');
       const clickable = Array.from(document.querySelectorAll('img.lightboxable'));
       if(!lb || !lbImg || !lbClose || !clickable.length) return;
+      let touchStart = null;
       const open = (src, alt)=>{
         lbImg.src = src;
         lbImg.alt = alt || '';
@@ -459,6 +460,18 @@
         lbImg.src = '';
         document.documentElement.style.overflow = '';
       };
+      // Touch events for swipe-to-close
+      lb.addEventListener('touchstart', (e)=>{
+        touchStart = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      }, {passive:true});
+      lb.addEventListener('touchend', (e)=>{
+        if(!touchStart) return;
+        const touchEnd = { x: e.changedTouches[0].clientX, y: e.changedTouches[0].clientY };
+        const deltaX = Math.abs(touchEnd.x - touchStart.x);
+        const deltaY = Math.abs(touchEnd.y - touchStart.y);
+        if(deltaX > 50 || deltaY > 50) close();
+        touchStart = null;
+      }, {passive:true});
       clickable.forEach(img=>{
         img.addEventListener('click',()=>open(img.currentSrc || img.src, img.alt));
       });
