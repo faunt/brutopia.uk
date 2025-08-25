@@ -34,6 +34,23 @@ function normalizeBase(noExt) {
   return noExt.replace(/-(?:\d+)(?:-\d+)?$/, "");
 }
 
+async function detectAvailableWidths(normalizedBase) {
+  // Look for png variants next to HTML, e.g., img/name-123.png, but not alias forms ending with -A-B
+  const dir = path.dirname(normalizedBase);
+  const base = path.basename(normalizedBase);
+  const pattern = path.join("..", dir, `${base}-*.png`);
+  const matches = await glob(pattern);
+  const widths = new Set();
+  for (const file of matches) {
+    const bn = path.basename(file);
+    const m = bn.match(/-(\d+)\.png$/);
+    if (m) widths.add(Number(m[1]));
+  }
+  const sorted = Array.from(widths).sort((a,b)=>a-b);
+  if (!sorted.length) return [400, 800];
+  return sorted;
+}
+
 async function transformHtml(file) {
   const html = await fs.readFile(file, "utf8");
   const $ = load(html, { decodeEntities: false });
@@ -56,6 +73,10 @@ async function transformHtml(file) {
     const { noExt } = baseParts(src);
     const normalizedBase = normalizeBase(noExt);
 
+    // pick widths based on files present
+    // eslint-disable-next-line no-sync
+    const widths = [];
+    // we'll replace with detected widths asynchronously below in a second pass
     const avifSrcset = buildSrcset(normalizedBase, "avif", WIDTHS);
     const webpSrcset = buildSrcset(normalizedBase, "webp", WIDTHS);
     const pngFallback = `${normalizedBase}-${DEFAULT_FALLBACK_WIDTH}.png`;
@@ -82,6 +103,48 @@ async function transformHtml(file) {
     // Replace original <img>
     $img.replaceWith(picture);
   });
+
+  // Normalize existing optimized <picture> blocks (remove nesting and alias suffixes)
+  await Promise.all(
+    $("picture[data-optimized=\"true\"]").map(async (_, el) => {
+      const $outer = $(el);
+      if ($outer.parents('picture[data-optimized="true"]').length) return; // only handle outermost
+      const innerImg = $outer.find('img[src]')[0];
+      if (!innerImg) return;
+      const $img = $(innerImg);
+      const src = $img.attr("src");
+      if (!looksLikeSiteImage(src)) return;
+      const { noExt } = baseParts(src);
+      const normalizedBase = normalizeBase(noExt);
+      const widths = await detectAvailableWidths(normalizedBase);
+      const avifSrcset = buildSrcset(normalizedBase, "avif", widths);
+      const webpSrcset = buildSrcset(normalizedBase, "webp", widths);
+      const fallbackWidth = widths.includes(DEFAULT_FALLBACK_WIDTH) ? DEFAULT_FALLBACK_WIDTH : widths[Math.min(1, widths.length-1)] || widths[0];
+      const alt = $img.attr("alt") || "";
+      const cls = $img.attr("class");
+      const id = $img.attr("id");
+      const widthAttr = $img.attr("width");
+      const heightAttr = $img.attr("height");
+      const sizesAttr = $img.attr("sizes") || DEFAULT_SIZES_ATTR;
+
+      const picture = $(
+        `<picture data-optimized="true">
+          <source srcset="${avifSrcset}" type="image/avif">
+          <source srcset="${webpSrcset}" type="image/webp">
+          <img src="${normalizedBase}-${fallbackWidth}.png" alt="${alt}" data-optimized="true">
+        </picture>`
+      );
+
+      const pictureImg = picture.find("img");
+      if (cls) pictureImg.attr("class", cls);
+      if (id) pictureImg.attr("id", id);
+      if (widthAttr) pictureImg.attr("width", widthAttr);
+      if (heightAttr) pictureImg.attr("height", heightAttr);
+      if (sizesAttr) pictureImg.attr("sizes", sizesAttr);
+
+      $outer.replaceWith(picture);
+    }).get()
+  );
 
   await fs.writeFile(file, $.html());
 }
