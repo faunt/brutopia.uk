@@ -28,6 +28,12 @@ function baseParts(src) {
   return { noExt, ext: ext.replace(/^\./, "").toLowerCase() };
 }
 
+// Remove trailing alias patterns like -800-400 or -400 from base name
+function normalizeBase(noExt) {
+  // strip one or two trailing numeric segments (e.g., -800 or -800-400)
+  return noExt.replace(/-(?:\d+)(?:-\d+)?$/, "");
+}
+
 async function transformHtml(file) {
   const html = await fs.readFile(file, "utf8");
   const $ = load(html, { decodeEntities: false });
@@ -35,8 +41,9 @@ async function transformHtml(file) {
   $("img[src]").each((_, el) => {
     const $img = $(el);
     if ($img.attr("data-optimized") === "true") return; // skip if already processed
+    if ($img.closest('picture[data-optimized="true"]').length) return; // avoid nesting
 
-    const src = $img.attr("src");
+    let src = $img.attr("src");
     if (!looksLikeSiteImage(src)) return;
 
     const alt = $img.attr("alt") || "";
@@ -45,11 +52,13 @@ async function transformHtml(file) {
     const widthAttr = $img.attr("width");
     const heightAttr = $img.attr("height");
 
+    // Normalize base to remove alias suffixes
     const { noExt } = baseParts(src);
+    const normalizedBase = normalizeBase(noExt);
 
-    const avifSrcset = buildSrcset(noExt, "avif", WIDTHS);
-    const webpSrcset = buildSrcset(noExt, "webp", WIDTHS);
-    const pngFallback = `${noExt}-${DEFAULT_FALLBACK_WIDTH}.png`;
+    const avifSrcset = buildSrcset(normalizedBase, "avif", WIDTHS);
+    const webpSrcset = buildSrcset(normalizedBase, "webp", WIDTHS);
+    const pngFallback = `${normalizedBase}-${DEFAULT_FALLBACK_WIDTH}.png`;
 
     const sizesAttr = $img.attr("sizes") || DEFAULT_SIZES_ATTR;
 
@@ -58,7 +67,7 @@ async function transformHtml(file) {
       `<picture data-optimized="true">
         <source srcset="${avifSrcset}" type="image/avif">
         <source srcset="${webpSrcset}" type="image/webp">
-        <img src="${pngFallback}" alt="${alt}">
+        <img src="${pngFallback}" alt="${alt}" data-optimized="true">
       </picture>`
     );
 
