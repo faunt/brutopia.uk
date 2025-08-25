@@ -5,7 +5,7 @@ import sharp from "sharp";
 
 // --- CONFIG ---
 const INPUT_GLOBS = [
-  "images/**/*.{png,jpg,jpeg}"
+  "../img/**/*.{png,jpg,jpeg}"
 ];
 const SIZES = [400, 800, 1600]; // widths to generate
 const MAKE_PNG_FALLBACK = true; // keep a downsized PNG alongside AVIF/WebP

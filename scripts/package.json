@@ -3,8 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "optimize:images": "node scripts/optimize-images.mjs",
-    "upgrade:html": "node scripts/upgrade-html.mjs",
+    "optimize:images": "node optimize-images.mjs",
+    "upgrade:html": "node upgrade-html.mjs",
     "optimize": "npm run optimize:images && npm run upgrade:html"
   },
   "dependencies": {

@@ -1,15 +1,13 @@
 import { glob } from "glob";
 import fs from "fs/promises";
 import path from "path";
-import cheerio from "cheerio";
+import { load } from "cheerio";
 
 // --- CONFIG ---
 const HTML_GLOBS = [
-  "**/*.html",
-  "!node_modules/**",
-  "!.git/**"
+  "../index.html"
 ];
-const IMAGE_DIR_HINTS = ["/images/", "images/"]; // only rewrite imgs that look like site assets
+const IMAGE_DIR_HINTS = ["/img/", "img/"]; // only rewrite imgs that look like site assets
 const WIDTHS = [400, 800, 1600];
 const DEFAULT_FALLBACK_WIDTH = 800; // which PNG to point <img src> at
 const DEFAULT_SIZES_ATTR = "(max-width: 800px) 100vw, 800px"; // adjust for your layout
@@ -32,7 +30,7 @@ function baseParts(src) {
 
 async function transformHtml(file) {
   const html = await fs.readFile(file, "utf8");
-  const $ = cheerio.load(html, { decodeEntities: false });
+  const $ = load(html, { decodeEntities: false });
 
   $("img[src]").each((_, el) => {
     const $img = $(el);
