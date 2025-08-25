@@ -36,11 +36,9 @@
     .tone-tomato{background:linear-gradient(180deg,#ffe7e2,#ffd8d2)}
     .tone-ink{background:linear-gradient(180deg,#131313,#1a1a1a);color:#f7f6f2}
 
-    /* Torn divider */
-    .torn{--edge: radial-gradient(14px 12px at 12px 12px, #000 60%, transparent 61%);position:relative}
-    .torn::before{content:"";position:absolute;left:0;right:0;top:-18px;height:18px;background:var(--paper);
-      -webkit-mask: repeating-linear-gradient(90deg,#000 0 24px,transparent 24px 48px), var(--edge);
-      mask: repeating-linear-gradient(90deg,#000 0 24px,transparent 24px 48px), var(--edge);opacity:.8}
+    /* Torn divider (disabled) */
+    .torn{position:relative}
+    .torn::before{content:none}
 
     header{position:relative;min-height:100vh;display:grid;place-items:center;text-align:center;overflow:clip;background:linear-gradient(180deg,#fff7d9,#f3eddc)}
     .hero-copy{position:relative;display:inline-block;padding:14px 22px;border-radius:18px;background:rgba(255,249,220,.72);box-shadow:0 12px 30px rgba(0,0,0,.18);backdrop-filter:blur(2px)}
@@ -65,7 +63,7 @@
 
     /* Parallax hero */
     .parallax-scene{position:absolute;inset:0;pointer-events:none}
-    .layer{position:absolute;will-change:transform;filter:drop-shadow(0 12px 24px rgba(0,0,0,.35));mix-blend-mode:multiply}
+    .layer{position:absolute;will-change:transform;filter:drop-shadow(0 12px 24px rgba(0,0,0,.35))}
     .layer img{display:block;max-width:90vw;height:auto}
     /* Collage section container */
     .collage-stage{position:relative;height:90vh;overflow:clip}
@@ -80,26 +78,26 @@
     footer{padding:44px 0;text-align:center;color:#5e574a}
 
     @media(prefers-reduced-motion:reduce){.layer{transform:none!important}}
+
+    /* Hero overlay inside header */
+    .hero-overlay{position:absolute;inset:0;display:grid;align-items:end;justify-items:center;padding-bottom:2vh;z-index:20;pointer-events:none}
+    .hero-overlay .hero-copy{pointer-events:auto}
   </style>
 </head>
 <body>
   <header>
-    <div class="wrap">
-      <div class="hero-copy">
-        <span class="badge">Open call</span>
-        <h1 class="title">Brutopia</h1>
-        <p class="subtitle">A true island paradise — and its parallel reality. Utopia in one eye, dystopia in the other. Bring a quip, drawing, advert, song, or something stranger.</p>
-        <div class="cta-row">
-          <a class="btn" href="#contribute">Contribute</a>
-          <a class="btn secondary" href="#about">About</a>
-        </div>
-      </div>
-    </div>
+    
 
     <!-- PARALLAX CLOUDS (hero) -->
     <div class="parallax-scene" aria-hidden="true">
+      <!-- tower background layer (scales slightly on scroll) -->
+      <div class="layer" data-speed="0.02" data-rotate="0" data-shift="0" data-scale="0.0004" data-basescale="1" data-basetx="-50%" data-basety="-50vh" style="top:10%; left:50%; z-index:0">
+        <picture data-optimized="true">
+          <img src="img/tower.png" alt="Tower" data-optimized="true" style="width:min(100vw,1600px)">
+        </picture>
+      </div>
       <!-- background cloud field -->
-      <div class="layer" data-speed="0.10" data-rotate="0" data-shift="0" data-scale="0.0005" style="inset:0; display:grid; place-items:center; z-index:0">
+      <div class="layer" data-speed="0.10" data-rotate="0" data-shift="1.25" data-scale="0.0005" data-basetx="-20%" data-basety="-50%" style="inset:0; display:grid; place-items:center; z-index:1">
         <picture data-optimized="true">
           <source srcset="img/cloud-400.avif 400w,
                   img/cloud-800.avif 800w,
@@ -111,7 +109,7 @@
       </picture>
       </div>
       <!-- clouds ring (scale up past edges) -->
-      <div class="layer" data-speed="0.18" data-rotate="0" data-shift="0" data-scale="0.0016" style="top:50%; left:50%; transform:translate(-50%,-50%); z-index:5">
+      <div class="layer" data-speed="0.18" data-rotate="0" data-shift="0" data-scale="0.0016" data-basescale="3" data-basetx="-50%" data-basety="-50%" style="top:50%; left:50%; z-index:5">
         <picture data-optimized="true">
           <source srcset="img/clouds-ring-400.avif 400w,
                   img/clouds-ring-800.avif 800w,
@@ -122,8 +120,8 @@
           <img src="img/clouds-ring-800.png" alt="Clouds ring" data-optimized="true" style="width:min(80vw,900px)">
       </picture>
       </div>
-      <!-- left cloud moves left and scales -->
-      <div class="layer" data-speed="0.22" data-rotate="0" data-shift="-0.10" data-scale="0.0012" style="top:55%; left:50%; transform:translate(-50%,-50%); z-index:6">
+      <!-- left cloud starts centered, drifts left and scales up -->
+      <div class="layer" data-speed="0.20" data-rotate="0" data-shift="-2.90" data-scale="0.0012" data-basescale="2" data-basetx="-50%" data-basety="-50%" style="top:55%; left:25%; z-index:6">
         <picture data-optimized="true">
           <source srcset="img/cloud-left-400.avif 400w,
                   img/cloud-left-800.avif 800w,
@@ -134,8 +132,8 @@
           <img src="img/cloud-left-800.png" alt="Cloud left" data-optimized="true" style="width:min(46vw,640px)">
       </picture>
       </div>
-      <!-- right cloud moves right and scales -->
-      <div class="layer" data-speed="0.22" data-rotate="0" data-shift="0.10" data-scale="0.0012" style="top:45%; left:50%; transform:translate(-50%,-50%); z-index:6">
+      <!-- right cloud starts centered, drifts right and scales up -->
+      <div class="layer" data-speed="0.22" data-rotate="0" data-shift="2.90" data-scale="0.0010" data-basescale="2" data-basetx="50%" data-basety="-50%" style="top:45%; right:25%; z-index:6">
         <picture data-optimized="true">
           <source srcset="img/cloud-right-400.avif 400w,
                   img/cloud-right-800.avif 800w,
@@ -147,7 +145,23 @@
       </picture>
       </div>
     </div>
+    <div class="hero-overlay" aria-hidden="false">
+      <div class="wrap">
+        <div class="layer" data-speed="-0.50" data-rotate="0" data-shift="0" data-scale="0" style="position:relative; z-index:21">
+          <div class="hero-copy">
+          <span class="badge">Open call</span>
+          <h1 class="title">Brutopia</h1>
+          <p class="subtitle">A true island paradise — and its parallel reality. Utopia in one eye, dystopia in the other. Bring a quip, drawing, advert, song, or something stranger.</p>
+          <div class="cta-row">
+            <a class="btn" href="#contribute">Contribute</a>
+            <a class="btn secondary" href="#about">About</a>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </header>
+
 
   <main>
     <!-- ABOUT -->
@@ -379,11 +393,15 @@
               const r = parseFloat(el.dataset.rotate||'0');
               const x = parseFloat(el.dataset.shift||'0');
               const sc = parseFloat(el.dataset.scale||'0');
+              const baseScale = parseFloat(el.dataset.basescale||'1');
+              const baseTx = (el.dataset.basetx||'0'); // e.g. '-50%'
+              const baseTy = (el.dataset.basety||'0');
               const deg = (y * r).toFixed(2);
               const xMove = (y * x).toFixed(2);
               const yMove = (y * s).toFixed(2);
-              const scale = (1 + y * sc);
-              el.style.transform = `translate3d(${xMove}px, ${yMove}px, 0) rotate(${deg}deg) scale(${scale})`;
+              const scale = baseScale * (1 + y * sc);
+              const baseTranslate = (baseTx !== '0' || baseTy !== '0') ? `translate(${baseTx}, ${baseTy}) ` : '';
+              el.style.transform = `${baseTranslate}translate3d(${xMove}px, ${yMove}px, 0) rotate(${deg}deg) scale(${scale})`;
             });
             ticking=false;
           });
