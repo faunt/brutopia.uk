@@ -82,6 +82,13 @@
     /* Section intro images (echoes) */
     .section-image{display:block;max-width:260px;margin:0 auto 2em;filter:drop-shadow(0 8px 14px rgba(0,0,0,.25))}
 
+    /* Lightbox */
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.82);display:none;align-items:center;justify-content:center;z-index:9999;padding:4vh 4vw}
+    .lightbox.open{display:flex}
+    .lightbox img{max-width:92vw;max-height:92vh;box-shadow:0 12px 36px rgba(0,0,0,.5);border-radius:12px}
+    .lightbox .close{position:absolute;top:10px;right:12px;appearance:none;border:0;background:rgba(255,255,255,.9);width:38px;height:38px;border-radius:999px;cursor:pointer;font-size:22px;line-height:38px;text-align:center}
+    img.lightboxable{cursor:zoom-in}
+
     footer{padding:44px 0;text-align:center;color:#5e574a}
 
     @media(prefers-reduced-motion:reduce){.layer{transform:none!important}}
@@ -179,7 +186,7 @@
                   img/car-halftone-small-800-600.avif 600w" type="image/avif">
         <source srcset="img/car-halftone-small-800-400.webp 400w,
                   img/car-halftone-small-800-600.webp 600w" type="image/webp">
-          <img src="img/car-halftone-small-800-600.png" alt="Halftone car" data-optimized="true" class="section-image" sizes="(max-width: 800px) 100vw, 800px">
+          <img src="img/car-halftone-small-800-600.png" alt="Halftone car" data-optimized="true" class="section-image lightboxable" sizes="(max-width: 800px) 100vw, 800px">
       </picture>
         <h2>Bruton is our home</h2>
         <p>Bruton is our home — the sum of our collective experiences, whatever they may be. But there’s a parallel reality: an island paradise hailed as the new Notting Hill; a playground of the rich and famous; a high street idling with Lamborghinis and Range Rovers; mouth‑watering culinary delights at every turn.</p>
@@ -201,7 +208,7 @@
                   img/utopia-800-577.avif 577w" type="image/avif">
         <source srcset="img/utopia-800-400.webp 400w,
                   img/utopia-800-577.webp 577w" type="image/webp">
-          <img src="img/utopia-800-577.png" alt="Utopia illustration" data-optimized="true" class="section-image" sizes="(max-width: 800px) 100vw, 800px">
+          <img src="img/utopia-800-577.png" alt="Utopia illustration" data-optimized="true" class="section-image lightboxable" sizes="(max-width: 800px) 100vw, 800px">
       </picture>
         <h2>The History Bit</h2>
         <p>In 1516 Thomas More, High Chancellor to Henry VIll, published a book called <em>‘Utopia’</em>, an imagined fictional island in which everything was <b>“perfect”</b>. More's <em>Utopia</em> was a <b>socio-political satire</b>. The book depicts a fictional island society and its religious, social and political <b>customs</b>.</p>
@@ -388,6 +395,12 @@
     <div class="wrap">© <span id="year"></span> Brutopia</div>
   </footer>
 
+  <!-- Lightbox overlay -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="close" id="lightboxClose" aria-label="Close">×</button>
+    <img id="lightboxImg" alt="Expanded view">
+  </div>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -424,6 +437,34 @@
       if(reduced.matches) return;
       addEventListener('scroll', onScroll, {passive:true});
       onScroll();
+    })();
+
+    // Lightbox logic
+    (function(){
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightboxImg');
+      const lbClose = document.getElementById('lightboxClose');
+      const clickable = Array.from(document.querySelectorAll('img.lightboxable'));
+      if(!lb || !lbImg || !lbClose || !clickable.length) return;
+      const open = (src, alt)=>{
+        lbImg.src = src;
+        lbImg.alt = alt || '';
+        lb.classList.add('open');
+        lb.setAttribute('aria-hidden','false');
+        document.documentElement.style.overflow = 'hidden';
+      };
+      const close = ()=>{
+        lb.classList.remove('open');
+        lb.setAttribute('aria-hidden','true');
+        lbImg.src = '';
+        document.documentElement.style.overflow = '';
+      };
+      clickable.forEach(img=>{
+        img.addEventListener('click',()=>open(img.currentSrc || img.src, img.alt));
+      });
+      lbClose.addEventListener('click', close);
+      lb.addEventListener('click', (e)=>{ if(e.target === lb) close(); });
+      addEventListener('keydown', (e)=>{ if(e.key === 'Escape') close(); });
     })();
   </script>
 
