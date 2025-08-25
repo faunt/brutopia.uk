@@ -32,8 +32,9 @@
     section{padding:clamp(56px,9vw,120px) 0;position:relative}
     .tone-paper{background:var(--paper)}
     .tone-news{background:var(--newsprint)}
-    .tone-cyan{background:linear-gradient(180deg,#edf7f6,#d9f0ef)}
-    .tone-tomato{background:linear-gradient(180deg,#ffe7e2,#ffd8d2)}
+    /* Muted, contemporary complements to the paper tone */
+    .tone-cyan{background:linear-gradient(180deg,#edf2ef,#e4ece8)}
+    .tone-tomato{background:linear-gradient(180deg,#f2e9e6,#ece2de)}
     .tone-ink{background:linear-gradient(180deg,#131313,#1a1a1a);color:#f7f6f2}
 
     /* Torn divider (disabled) */
@@ -69,7 +70,7 @@
     @media (orientation: portrait){
       header{min-height:100vh}
       #tower-layer{top:0}
-      #tower-layer .tower-img{width:100vw;height:150vh;object-fit:cover;object-position:center top}
+      #tower-layer .tower-img{width:100vw;height:150vh;object-fit:cover;}
     }
     /* Collage section container */
     .collage-stage{position:relative;height:90vh;overflow:clip}
@@ -157,7 +158,7 @@
           <div class="hero-copy">
           <span class="badge">Open call</span>
           <h1 class="title">Brutopia</h1>
-          <p class="subtitle">A true island paradise — and its parallel reality. Utopia in one eye, dystopia in the other. Bring a quip, drawing, advert, song, or something stranger.</p>
+          <p class="subtitle">A true island paradise.</p>
           <div class="cta-row">
             <a class="btn" href="#contribute">Contribute</a>
             <a class="btn secondary" href="#about">About</a>
@@ -186,6 +187,12 @@
       </div>
     </section>
 
+    <section>
+      <div class="wrap">
+        <h2>You the artist</h2>
+        <p>We all know what Bruton means to us. But what does the illusion of Bruton mean to you? This exhibition invites you to imagine Brutopia, a parallel reality & satirical reimagining of the island paradise. Does Brutopia live up to the headlines or is it more of a dystopia?</p>
+      </div>
+    </section>
     <!-- UTOPIA / HISTORY -->
     <section id="utopia" class="tone-news torn">
       <div class="wrap">
@@ -196,9 +203,10 @@
                   img/utopia-800-577.webp 577w" type="image/webp">
           <img src="img/utopia-800-577.png" alt="Utopia illustration" data-optimized="true" class="section-image" sizes="(max-width: 800px) 100vw, 800px">
       </picture>
-        <h2>From Utopia to Brutopia</h2>
-        <p>1516: Thomas More publishes <em>Utopia</em>, a satirical island where pleasure, virtue, and living according to nature are ideals. Multiple religions coexist; none is absolute. More popularised the habit of imagining parallel realities — but baked into every utopia is its shadow: the imperfect, the illusion.</p>
-        <p>Across the literature, two species recur: the carnival island (feast, drink, copulate), and the antiseptic island (streamlined, odorless, sensible). Somewhere between the fête and the lab lies Brutopia.</p>
+        <h2>The History Bit</h2>
+        <p>In 1516 Thomas More, High Chancellor to Henry VIll, published a book called <em>‘Utopia’</em>, an imagined fictional island in which everything was <b>“perfect”</b>. More's <em>Utopia</em> was a <b>socio-political satire</b>. The book depicts a fictional island society and its religious, social and political <b>customs</b>.</p>
+        <p>On the island - pleasure, practice of spiritual virtues & living according to nature are all held in the highest regard. There are several religions on the island: <b>moon-worshippers, sun-worshippers, planet-worshippers, ancestor-worshippers</b> and monotheists, each is tolerant of the others.</p>
+        <p>However, More's Utopia popularised the idea of imagining <b>parallel realities</b>. Every utopia contains a dystopia, an illusion where nothing is perfect.</p>
       </div>
     </section>
 
@@ -327,22 +335,20 @@
     <!-- PROMPTS -->
     <section id="prompts" class="tone-cyan torn">
       <div class="wrap">
-        <h2>Pick a thread, pull it</h2>
-        <p class="muted">Steal these prompts or ignore them entirely. There’s no right door into Brutopia.</p>
-        <ul>
-          <li>What version of utopia is your Brutopia?</li>
-          <li>What customs, practices, and values exist on the island paradise?</li>
-          <li>What tensions live within Brutopia? Where does the gleam crack?</li>
-          <li>What does the future hold for Brutopia?</li>
-        </ul>
+        <h2>Different types of Utopia?</h2>
+        <p>More's book, in some ways a work of early science fiction, gave rise to a whole new genre of writing. Judging from that literature, there are really two kinds of utopia. There are carnivalesque societies in which, instead of working, everyone will drink, feast and copulate from dawn to dusk.</p>
+        <p>There are also more austere utopias, in which everything is odourless and antiseptic, intolerably streamlined and sensible.</p>
       </div>
     </section>
 
     <!-- CTA BAND -->
-    <section class="tone-tomato cta-band torn">
+    <section class="tone-tomato">
       <div class="wrap">
-        <h2 style="margin-bottom:10px">Show us your island</h2>
-        <p class="muted" style="margin:0 0 16px">Quip, drawing, advert, song — or something stranger.</p>
+        <h2>The challenge</h2>
+        <p>If you have a quip/idea/drawing/joke/blockbuster/advert/song that you would like to contribute as part of the 'Brutopia' exhibition, then....</p>
+          <ul><li>You don't have to be an artist.</li>
+          <li>You don't have to be a philosopher.</li>
+          <li>You just have to have an idea of Brutopia.</li></ul>
         <a class="btn" href="#contribute">Contribute to Brutopia</a>
       </div>
     </section>
