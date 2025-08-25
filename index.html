@@ -65,11 +65,11 @@
     .parallax-scene{position:absolute;inset:0;pointer-events:none}
     .layer{position:absolute;will-change:transform;filter:drop-shadow(0 12px 24px rgba(0,0,0,.35))}
     .layer img{display:block;max-width:90vw;height:auto}
-    #tower-layer .tower-img{max-width:none;width:100vw;height:auto}
-    @media (max-width: 640px) and (orientation: portrait){
-      header{min-height:110vh}
+    #tower-layer .tower-img{max-width:none;height:auto}
+    @media (max-aspect-ratio: 3/4){
+      header{min-height:100vh}
       #tower-layer{top:0}
-      #tower-layer .tower-img{width:120vw}
+      #tower-layer .tower-img{width:auto;height:100vh}
     }
     /* Collage section container */
     .collage-stage{position:relative;height:90vh;overflow:clip}
