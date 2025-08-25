@@ -65,6 +65,12 @@
     .parallax-scene{position:absolute;inset:0;pointer-events:none}
     .layer{position:absolute;will-change:transform;filter:drop-shadow(0 12px 24px rgba(0,0,0,.35))}
     .layer img{display:block;max-width:90vw;height:auto}
+    #tower-layer .tower-img{max-width:none;width:100vw;height:auto}
+    @media (max-width: 640px) and (orientation: portrait){
+      header{min-height:110vh}
+      #tower-layer{top:0}
+      #tower-layer .tower-img{width:120vw}
+    }
     /* Collage section container */
     .collage-stage{position:relative;height:90vh;overflow:clip}
 
@@ -91,9 +97,9 @@
     <!-- PARALLAX CLOUDS (hero) -->
     <div class="parallax-scene" aria-hidden="true">
       <!-- tower background layer (scales slightly on scroll) -->
-      <div class="layer" data-speed="0.02" data-rotate="0" data-shift="0" data-scale="0.0004" data-basescale="1" data-basetx="-50%" data-basety="-50vh" style="top:10%; left:50%; z-index:0">
+      <div id="tower-layer" class="layer" data-speed="0.02" data-rotate="0" data-shift="0" data-scale="0.0004" data-basescale="1" data-basetx="-50%" data-basety="-50vh" style="top:10%; left:50%; z-index:0">
         <picture data-optimized="true">
-          <img src="img/tower.png" alt="Tower" data-optimized="true" style="width:min(100vw,1600px)">
+          <img class="tower-img" src="img/tower.png" alt="Tower" data-optimized="true" style="width:min(100vw,1600px)">
         </picture>
       </div>
       <!-- background cloud field -->
