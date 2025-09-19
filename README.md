@@ -41,6 +41,7 @@ An open call to play with Bruton's parallel reality: utopia vs. dystopia. Contri
 - [ ] **Responsive design** - Test all new imagery across different screen sizes
 - [ ] **Accessibility** - Add proper alt text for all new imagery
 - [ ] **Performance** - Optimize loading times for additional content
+- [ ] **Email forwarding** - Review and configure email forwarding for @brutopia.uk addresses (submit@brutopia.uk, etc.)
 
 ### 📋 Content Integration
 - [ ] **Review existing content** - Ensure new imagery and text complement the current site structure
