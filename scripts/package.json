@@ -3,9 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "cleanup:images": "node cleanup-images.mjs",
     "optimize:images": "node optimize-images.mjs",
     "upgrade:html": "node upgrade-html.mjs",
-    "optimize": "npm run optimize:images && npm run upgrade:html"
+    "optimize": "npm run cleanup:images && npm run optimize:images && npm run upgrade:html"
   },
   "dependencies": {
     "cheerio": "^1.0.0",
