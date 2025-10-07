@@ -7,22 +7,22 @@ An open call to play with Bruton's parallel reality: utopia vs. dystopia. Contri
 ### 🎯 Content Development Checklist
 
 #### Imagery Collection
-- [ ] **Leo's picture** - Source and integrate portrait imagery
-- [ ] **Greggs brand / sausage roll** - Obtain branded imagery or create satirical representation
+- [x] **Leo's picture** - Source and integrate portrait imagery
+- [x] **Greggs brand / sausage roll** - Obtain branded imagery or create satirical representation
 - [ ] **Colour pic of a Ferrari / Lamborghini** - Source luxury car imagery for the "playground of the rich and famous" theme
 - [ ] **Michelin stars** - Find or create imagery representing high-end dining
 - [ ] **For Sale signs** - Source real estate signage imagery
 - [ ] **Range Rovers** - Collect luxury SUV imagery to complement the car theme
-- [ ] **Reference to worship** - Research and integrate Slavic mythology references from [Culture Frontier](https://www.culturefrontier.com/slavic-mythology/)
+- [x] **Reference to worship** - Research and integrate Slavic mythology references from [Culture Frontier](https://www.culturefrontier.com/slavic-mythology/)
 - [ ] **Montecito sign** - Source or recreate sign imagery from [eBay listing](https://www.ebay.co.uk/itm/156385163508)
 - [ ] **Fancy food dishes** - Collect high-end restaurant imagery from:
   - [The Spruce Eats Guide](https://www.thespruceeats.com/ultimate-guide-to-making-fancy-restaurant-dishes-at-home-5095895)
   - [KimKim Luxury Dining Tour](https://www.kimkim.com/c/luxury-nature-fine-dining-tour-australia-10-days)
-- [ ] **Locals go home cartoon** - Source cartoon imagery from [CartoonStock](https://www.cartoonstock.com/cartoon?searchID=CS252315)
+- [x] **Locals go home cartoon** - Source cartoon imagery from [CartoonStock](https://www.cartoonstock.com/cartoon?searchID=CS252315)
 - [ ] **House prices rise** - Find rising house prices graph imagery from [Dreamstime](https://www.dreamstime.com/stock-photos-house-prices-going-up-illustrated-graph-image27543453)
 - [ ] **Moving van** - Source moving company imagery from [1st Formations](https://www.1stformations.co.uk/blog/move-company-from-another-country-to-the-uk/)
 - [ ] **George Osborne** - Find rollercoaster imagery from [The Guardian](https://www.theguardian.com/commentisfree/picture/2015/mar/22/george-osborne-rollercoaster-riddell)
-- [ ] **Golden dustbin** - Source luxury trash can imagery from [Shutterstock](https://www.shutterstock.com/image-illustration/gold-trash-can-58111018)
+- [x] **Golden dustbin** - Source luxury trash can imagery from [Shutterstock](https://www.shutterstock.com/image-illustration/gold-trash-can-58111018)
 
 #### Text Content
 - [ ] **Welcome to Brutopia** - Finalize opening message for the site
