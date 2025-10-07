@@ -8,9 +8,9 @@ const HTML_GLOBS = [
   "../index.html"
 ];
 const IMAGE_DIR_HINTS = ["/img/", "img/"]; // only rewrite imgs that look like site assets
-const WIDTHS = [400, 800, 1600];
-const DEFAULT_FALLBACK_WIDTH = 800; // which PNG to point <img src> at
-const DEFAULT_SIZES_ATTR = "(max-width: 800px) 100vw, 800px"; // adjust for your layout
+const WIDTHS = [400, 800, 1200]; // Match the sizes from optimize-images.mjs
+const DEFAULT_FALLBACK_WIDTH = 800; // which size to use as fallback
+const DEFAULT_SIZES_ATTR = "(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw"; // responsive sizes
 
 function looksLikeSiteImage(src) {
   if (!src) return false;
@@ -28,26 +28,26 @@ function baseParts(src) {
   return { noExt, ext: ext.replace(/^\./, "").toLowerCase() };
 }
 
-// Remove trailing alias patterns like -800-400 or -400 from base name
+// Remove any existing size suffixes from base name
 function normalizeBase(noExt) {
-  // strip one or two trailing numeric segments (e.g., -800 or -800-400)
-  return noExt.replace(/-(?:\d+)(?:-\d+)?$/, "");
+  // strip trailing numeric segments (e.g., -800, -400)
+  return noExt.replace(/-\d+$/, "");
 }
 
 async function detectAvailableWidths(normalizedBase) {
-  // Look for png variants next to HTML, e.g., img/name-123.png, but not alias forms ending with -A-B
+  // Look for AVIF variants to determine available sizes
   const dir = path.dirname(normalizedBase);
   const base = path.basename(normalizedBase);
-  const pattern = path.join("..", dir, `${base}-*.png`);
+  const pattern = path.join("..", dir, `${base}-*.avif`);
   const matches = await glob(pattern);
   const widths = new Set();
   for (const file of matches) {
     const bn = path.basename(file);
-    const m = bn.match(/-(\d+)\.png$/);
+    const m = bn.match(/-(\d+)\.avif$/);
     if (m) widths.add(Number(m[1]));
   }
   const sorted = Array.from(widths).sort((a,b)=>a-b);
-  if (!sorted.length) return [400, 800];
+  if (!sorted.length) return WIDTHS; // fallback to default sizes
   return sorted;
 }
 
@@ -73,22 +73,19 @@ async function transformHtml(file) {
     const { noExt } = baseParts(src);
     const normalizedBase = normalizeBase(noExt);
 
-    // pick widths based on files present
-    // eslint-disable-next-line no-sync
-    const widths = [];
-    // we'll replace with detected widths asynchronously below in a second pass
+    // Use original image as fallback, optimized versions for modern browsers
     const avifSrcset = buildSrcset(normalizedBase, "avif", WIDTHS);
     const webpSrcset = buildSrcset(normalizedBase, "webp", WIDTHS);
-    const pngFallback = `${normalizedBase}-${DEFAULT_FALLBACK_WIDTH}.png`;
+    const originalFallback = src; // Use the original image as fallback
 
     const sizesAttr = $img.attr("sizes") || DEFAULT_SIZES_ATTR;
 
-    // Build <picture>
+    // Build <picture> with original as fallback
     const picture = $(
       `<picture data-optimized="true">
         <source srcset="${avifSrcset}" type="image/avif">
         <source srcset="${webpSrcset}" type="image/webp">
-        <img src="${pngFallback}" alt="${alt}" data-optimized="true">
+        <img src="${originalFallback}" alt="${alt}" data-optimized="true">
       </picture>`
     );
 
@@ -119,7 +116,7 @@ async function transformHtml(file) {
       const widths = await detectAvailableWidths(normalizedBase);
       const avifSrcset = buildSrcset(normalizedBase, "avif", widths);
       const webpSrcset = buildSrcset(normalizedBase, "webp", widths);
-      const fallbackWidth = widths.includes(DEFAULT_FALLBACK_WIDTH) ? DEFAULT_FALLBACK_WIDTH : widths[Math.min(1, widths.length-1)] || widths[0];
+      const originalFallback = src; // Use original as fallback
       const alt = $img.attr("alt") || "";
       const cls = $img.attr("class");
       const id = $img.attr("id");
@@ -131,7 +128,7 @@ async function transformHtml(file) {
         `<picture data-optimized="true">
           <source srcset="${avifSrcset}" type="image/avif">
           <source srcset="${webpSrcset}" type="image/webp">
-          <img src="${normalizedBase}-${fallbackWidth}.png" alt="${alt}" data-optimized="true">
+          <img src="${originalFallback}" alt="${alt}" data-optimized="true">
         </picture>`
       );
 

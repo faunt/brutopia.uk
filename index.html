@@ -9,6 +9,7 @@
   <meta property="og:image" content="img/brutopia.png">
   <meta name="theme-color" content="#f3eddc">
   <link rel="icon" href="img/brutopia.png">
+  <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&amp;display=swap" rel="stylesheet">
   <style>
     :root{
       /* Yellowed-magazine palette */
@@ -24,7 +25,7 @@
     }
     *,*::before,*::after{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.45;background:var(--paper);color:var(--ink)}
+    body{margin:0;font-family:'Averia Serif Libre',ui-serif,Georgia,'Times New Roman',serif;line-height:1.45;background:var(--paper);color:var(--ink)}
     a{color:inherit}
     .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
 
@@ -42,18 +43,18 @@
     .torn::before{content:none}
 
     header{position:relative;min-height:100vh;display:grid;place-items:center;text-align:center;overflow:clip;background:linear-gradient(180deg,#fff7d9,#f3eddc)}
-    .hero-copy{position:relative;display:inline-block;padding:14px 22px;border-radius:18px;background:rgba(255,249,220,.72);box-shadow:0 12px 30px rgba(0,0,0,.18);backdrop-filter:blur(2px)}
-    .badge{display:inline-block;padding:6px 10px;border:1px solid currentColor;border-radius:999px;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:#5c5243;background:#fff3bd}
-    .title{font-size:clamp(44px,10vw,140px);font-weight:900;line-height:.9;margin:6px 0 12px;color:#000;text-shadow:0 2px 8px rgba(255,255,255,.9);letter-spacing:-.01em}
-    .subtitle{font-size:clamp(18px,3vw,26px);color:#493f2d;max-width:48ch;margin:0 auto 6px}
-    .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:14px}
-    .btn{appearance:none;border:2px solid #1d170f;background:#11110f;color:#fff3c4;padding:12px 18px;border-radius:14px;font-weight:800;cursor:pointer;box-shadow:0 6px 0 #d4b85a;transition:transform .08s ease,box-shadow .08s ease}
+    .hero-copy{position:relative;display:inline-block;padding:14px 22px;border-radius:40px;background:rgba(255,249,220,.72);box-shadow:0 12px 30px rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.3)}
+    .badge{display:inline-block;padding:0.375rem 0.625rem;border:1px solid currentColor;border-radius:999px;font-size:0.75rem;letter-spacing:.04em;text-transform:uppercase;color:#5c5243;background:#fff3bd}
+    .title{font-size:clamp(2.75rem,8vw,8.75rem);font-weight:400;font-style:italic;line-height:.9;margin:0.375rem 0 0.75rem;color:#000;text-shadow:0 0.125rem 0.5rem rgba(255,255,255,.9);letter-spacing:-.01em;font-family:'Averia Serif Libre',ui-serif,Georgia,'Times New Roman',serif}
+    .subtitle{font-size:clamp(1.25rem,3vw,2rem);color:#493f2d;max-width:48ch;margin:0 auto 0.375rem;font-family:'Averia Serif Libre',ui-serif,Georgia,'Times New Roman',serif;font-weight:400;font-style:italic}
+    .cta-row{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;margin-top:0.875rem}
+    .btn{appearance:none;border:2px solid #1d170f;background:#11110f;color:#fff3c4;padding:0.75rem 1.125rem;border-radius:0.875rem;font-weight:800;cursor:pointer;box-shadow:0 0.375rem 0 #d4b85a;transition:transform .08s ease,box-shadow .08s ease}
     .btn.secondary{background:transparent;color:#11110f;border-color:#11110f}
     .btn:hover{transform:translateY(-1px)}
-    .btn:active{transform:translateY(2px);box-shadow:0 2px 0 #b99d45}
+    .btn:active{transform:translateY(0.125rem);box-shadow:0 0.125rem 0 #b99d45}
 
-    h2{font-size:clamp(28px,4.2vw,56px);line-height:1.05;margin:0 0 16px}
-    p,li{font-size:clamp(16px,1.4vw,20px)}
+    h2{font-size:clamp(1.75rem,3.5vw,3.5rem);line-height:1.05;margin:0 0 1rem;font-family:'Averia Serif Libre',ui-serif,Georgia,'Times New Roman',serif;font-weight:700}
+    p,li{font-size:clamp(1rem,1.2vw,1.25rem)}
     .muted{opacity:.72}
 
     .grid{display:grid;gap:clamp(18px,3vw,28px);grid-template-columns:1fr}
@@ -81,6 +82,7 @@
 
     /* Section intro images (echoes) */
     .section-image{display:block;max-width:260px;margin:0 auto 2em;filter:drop-shadow(0 8px 14px rgba(0,0,0,.25))}
+    .image-credit{text-align:center;font-size:0.875rem;color:#666;margin:-1.5em 0 2em;font-style:italic}
 
     /* Lightbox */
     .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.82);display:none;align-items:center;justify-content:center;z-index:9999;padding:4vh 4vw}
@@ -107,7 +109,13 @@
       <!-- tower background layer (scales slightly on scroll) -->
       <div id="tower-layer" class="layer" data-speed="0.02" data-rotate="0" data-shift="0" data-scale="0.0004" data-basescale="1" data-basetx="-50%" data-basety="-50vh" style="top:10%; left:50%; z-index:0">
         <picture data-optimized="true">
-          <img class="tower-img" src="img/tower.png" alt="Tower" data-optimized="true" style="width:min(100vw,1600px)">
+          <source srcset="img/tower-400.avif 400w,
+                  img/tower-800.avif 800w,
+                  img/tower-969.avif 969w" type="image/avif">
+          <source srcset="img/tower-400.webp 400w,
+                  img/tower-800.webp 800w,
+                  img/tower-969.webp 969w" type="image/webp">
+          <img src="img/tower.png" alt="Tower" data-optimized="true" class="tower-img" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
         </picture>
       </div>
       <!-- background cloud field -->
@@ -115,57 +123,65 @@
         <picture data-optimized="true">
           <source srcset="img/cloud-400.avif 400w,
                   img/cloud-800.avif 800w,
+                  img/cloud-1200.avif 1200w,
                   img/cloud-1536.avif 1536w" type="image/avif">
           <source srcset="img/cloud-400.webp 400w,
                   img/cloud-800.webp 800w,
+                  img/cloud-1200.webp 1200w,
                   img/cloud-1536.webp 1536w" type="image/webp">
-          <img src="img/cloud-800.png" alt="Clouds background" data-optimized="true" style="width:min(90vw,1200px)">
-      </picture>
+          <img src="img/cloud-800.png" alt="Clouds background" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
+        </picture>
       </div>
       <!-- clouds ring (scale up past edges) -->
       <div class="layer" data-speed="0.18" data-rotate="0" data-shift="0" data-scale="0.0016" data-basescale="3" data-basetx="-50%" data-basety="-50%" style="top:50%; left:50%; z-index:5">
         <picture data-optimized="true">
           <source srcset="img/clouds-ring-400.avif 400w,
                   img/clouds-ring-800.avif 800w,
+                  img/clouds-ring-1200.avif 1200w,
                   img/clouds-ring-1536.avif 1536w" type="image/avif">
           <source srcset="img/clouds-ring-400.webp 400w,
                   img/clouds-ring-800.webp 800w,
+                  img/clouds-ring-1200.webp 1200w,
                   img/clouds-ring-1536.webp 1536w" type="image/webp">
-          <img src="img/clouds-ring-800.png" alt="Clouds ring" data-optimized="true" style="width:min(80vw,900px)">
-      </picture>
+          <img src="img/clouds-ring-800.png" alt="Clouds ring" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
+        </picture>
       </div>
       <!-- left cloud starts centered, drifts left and scales up -->
       <div class="layer" data-speed="0.20" data-rotate="0" data-shift="-2.90" data-scale="0.0012" data-basescale="2" data-basetx="-50%" data-basety="-50%" style="top:55%; left:25%; z-index:6">
         <picture data-optimized="true">
           <source srcset="img/cloud-left-400.avif 400w,
                   img/cloud-left-800.avif 800w,
+                  img/cloud-left-1200.avif 1200w,
                   img/cloud-left-1536.avif 1536w" type="image/avif">
           <source srcset="img/cloud-left-400.webp 400w,
                   img/cloud-left-800.webp 800w,
+                  img/cloud-left-1200.webp 1200w,
                   img/cloud-left-1536.webp 1536w" type="image/webp">
-          <img src="img/cloud-left-800.png" alt="Cloud left" data-optimized="true" style="width:min(46vw,640px)">
-      </picture>
+          <img src="img/cloud-left-800.png" alt="Cloud left" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
+        </picture>
       </div>
       <!-- right cloud starts centered, drifts right and scales up -->
       <div class="layer" data-speed="0.22" data-rotate="0" data-shift="2.90" data-scale="0.0010" data-basescale="2" data-basetx="50%" data-basety="-50%" style="top:45%; right:25%; z-index:6">
         <picture data-optimized="true">
           <source srcset="img/cloud-right-400.avif 400w,
                   img/cloud-right-800.avif 800w,
+                  img/cloud-right-1200.avif 1200w,
                   img/cloud-right-1536.avif 1536w" type="image/avif">
           <source srcset="img/cloud-right-400.webp 400w,
                   img/cloud-right-800.webp 800w,
+                  img/cloud-right-1200.webp 1200w,
                   img/cloud-right-1536.webp 1536w" type="image/webp">
-          <img src="img/cloud-right-800.png" alt="Cloud right" data-optimized="true" style="width:min(46vw,640px)">
-      </picture>
+          <img src="img/cloud-right-800.png" alt="Cloud right" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
+        </picture>
       </div>
     </div>
     <div class="hero-overlay" aria-hidden="false">
       <div class="wrap">
         <div class="layer" data-speed="-0.50" data-rotate="0" data-shift="0" data-scale="0" style="position:relative; z-index:21">
           <div class="hero-copy">
-          <span class="badge">Open call</span>
+          <p class="subtitle">Welcome to</p>
           <h1 class="title">Brutopia</h1>
-          <p class="subtitle">A true island paradise.</p>
+          <span class="badge">Open call</span>
           <div class="cta-row">
             <a class="btn" href="#contribute">Contribute</a>
             <a class="btn secondary" href="#about">About</a>
@@ -182,12 +198,12 @@
     <section id="about" class="tone-paper torn">
       <div class="wrap">
         <picture data-optimized="true">
-        <source srcset="img/car-halftone-small-800-400.avif 400w,
+          <source srcset="img/car-halftone-small-800-400.avif 400w,
                   img/car-halftone-small-800-600.avif 600w" type="image/avif">
-        <source srcset="img/car-halftone-small-800-400.webp 400w,
+          <source srcset="img/car-halftone-small-800-400.webp 400w,
                   img/car-halftone-small-800-600.webp 600w" type="image/webp">
           <img src="img/car-halftone-small-800-600.png" alt="Halftone car" data-optimized="true" class="section-image lightboxable" sizes="(max-width: 800px) 100vw, 800px">
-      </picture>
+        </picture>
         <h2>Bruton is our home</h2>
         <p>Bruton is our home — the sum of our collective experiences, whatever they may be. But there’s a parallel reality: an island paradise hailed as the new Notting Hill; a playground of the rich and famous; a high street idling with Lamborghinis and Range Rovers; mouth‑watering culinary delights at every turn.</p>
         <p>This exhibition holds the two at once: the reality and the illusion, the utopia and the dystopia — and asks, <em>what really is the island paradise of Brutopia?</em></p>
@@ -196,23 +212,33 @@
 
     <section>
       <div class="wrap">
+        <picture data-optimized="true">
+          <source srcset="img/leo-400.avif 400w,
+                  img/leo-800.avif 800w,
+                  img/leo-1200.avif 1200w" type="image/avif">
+          <source srcset="img/leo-400.webp 400w,
+                  img/leo-800.webp 800w,
+                  img/leo-1200.webp 1200w" type="image/webp">
+          <img src="img/leo-800.jpg" alt="Leo Walton" data-optimized="true" class="section-image lightboxable" sizes="(max-width: 800px) 100vw, 800px">
+        </picture>
+        <p class="image-credit">Leo Walton 2025</p>
         <h2>You the artist</h2>
-        <p>We all know what Bruton means to us. But what does the illusion of Bruton mean to you? This exhibition invites you to imagine Brutopia, a parallel reality & satirical reimagining of the island paradise. Does Brutopia live up to the headlines or is it more of a dystopia?</p>
+        <p>We all know what Bruton means to us. But what does the illusion of Bruton mean to you? This exhibition invites you to imagine Brutopia, a parallel reality &amp; satirical reimagining of the island paradise. Does Brutopia live up to the headlines or is it more of a dystopia?</p>
       </div>
     </section>
     <!-- UTOPIA / HISTORY -->
     <section id="utopia" class="tone-news torn">
       <div class="wrap">
         <picture data-optimized="true">
-        <source srcset="img/utopia-800-400.avif 400w,
+          <source srcset="img/utopia-800-400.avif 400w,
                   img/utopia-800-577.avif 577w" type="image/avif">
-        <source srcset="img/utopia-800-400.webp 400w,
+          <source srcset="img/utopia-800-400.webp 400w,
                   img/utopia-800-577.webp 577w" type="image/webp">
           <img src="img/utopia-800-577.png" alt="Utopia illustration" data-optimized="true" class="section-image lightboxable" sizes="(max-width: 800px) 100vw, 800px">
-      </picture>
+        </picture>
         <h2>The History Bit</h2>
         <p>In 1516 Thomas More, High Chancellor to Henry VIll, published a book called <em>‘Utopia’</em>, an imagined fictional island in which everything was <b>“perfect”</b>. More's <em>Utopia</em> was a <b>socio-political satire</b>. The book depicts a fictional island society and its religious, social and political <b>customs</b>.</p>
-        <p>On the island - pleasure, practice of spiritual virtues & living according to nature are all held in the highest regard. There are several religions on the island: <b>moon-worshippers, sun-worshippers, planet-worshippers, ancestor-worshippers</b> and monotheists, each is tolerant of the others.</p>
+        <p>On the island - pleasure, practice of spiritual virtues &amp; living according to nature are all held in the highest regard. There are several religions on the island: <b>moon-worshippers, sun-worshippers, planet-worshippers, ancestor-worshippers</b> and monotheists, each is tolerant of the others.</p>
         <p>However, More's Utopia popularised the idea of imagining <b>parallel realities</b>. Every utopia contains a dystopia, an illusion where nothing is perfect.</p>
       </div>
     </section>
@@ -224,115 +250,117 @@
           <div class="parallax-scene" aria-hidden="true">
             <div class="layer" data-speed="0.30" data-rotate="0.10" data-shift="0.04" style="top:25%; left:50%; transform:translateX(-50%); z-index:10">
               <picture data-optimized="true">
-                <source srcset="img/brutopia-400.avif 400w,
-                        img/brutopia-800.avif 800w,
-                        img/brutopia-1536.avif 1536w" type="image/avif">
-                <source srcset="img/brutopia-400.webp 400w,
-                        img/brutopia-800.webp 800w,
-                        img/brutopia-1536.webp 1536w" type="image/webp">
-                <img src="img/brutopia-800.png" alt="Brutopia collage" data-optimized="true" style="width:min(42vw,540px)">
-              </picture>
+          <source srcset="img/brutopia-400.avif 400w,
+                  img/brutopia-800.avif 800w,
+                  img/brutopia-1200.avif 1200w,
+                  img/brutopia-1536.avif 1536w" type="image/avif">
+          <source srcset="img/brutopia-400.webp 400w,
+                  img/brutopia-800.webp 800w,
+                  img/brutopia-1200.webp 1200w,
+                  img/brutopia-1536.webp 1536w" type="image/webp">
+          <img src="img/brutopia-800.png" alt="Brutopia collage" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
+        </picture>
             </div>
             <div class="layer" data-speed="0.10" data-rotate="-0.02" data-shift="-0.01" style="top:6%; left:4%; z-index:1">
               <picture data-optimized="true">
-                <source srcset="img/rainbow-400.avif 400w,
-                        img/rainbow-750.avif 750w" type="image/avif">
-                <source srcset="img/rainbow-400.webp 400w,
-                        img/rainbow-750.webp 750w" type="image/webp">
-                <img src="img/rainbow-750.png" alt="Rainbow" data-optimized="true" style="width:min(42vw,540px)">
-              </picture>
+          <source srcset="img/rainbow-400.avif 400w,
+                  img/rainbow-750.avif 750w" type="image/avif">
+          <source srcset="img/rainbow-400.webp 400w,
+                  img/rainbow-750.webp 750w" type="image/webp">
+          <img src="img/rainbow-750.png" alt="Rainbow" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
+        </picture>
             </div>
             <div class="layer" data-speed="0.52" data-rotate="0.06" data-shift="0.06" style="bottom:8%; left:30%; z-index:4">
               <picture data-optimized="true">
-                <source srcset="img/california-400.avif 400w,
-                        img/california-800-400.avif 800w" type="image/avif">
-                <source srcset="img/california-400.webp 400w,
-                        img/california-800-400.webp 800w" type="image/webp">
-                <img src="img/california-800-400.png" alt="California" data-optimized="true" style="width:min(42vw,540px)">
-              </picture>
+          <source srcset="img/california-800-400.avif 400w,
+                  img/california-800-800.avif 800w,
+                  img/california-800-1200.avif 1200w" type="image/avif">
+          <source srcset="img/california-800-400.webp 400w,
+                  img/california-800-800.webp 800w,
+                  img/california-800-1200.webp 1200w" type="image/webp">
+          <img src="img/california-800-400.png" alt="California" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
+        </picture>
             </div>
             <div class="layer" data-speed="0.28" data-rotate="-0.03" data-shift="-0.03" style="top:24%; left:16%; z-index:3">
               <picture data-optimized="true">
-                <source srcset="img/beez-400.avif 400w,
-                        img/beez-800.avif 800w,
-                        img/beez-1024.avif 1024w" type="image/avif">
-                <source srcset="img/beez-400.webp 400w,
-                        img/beez-800.webp 800w,
-                        img/beez-1024.webp 1024w" type="image/webp">
-                <img src="img/beez-800.png" alt="Beekeeper" data-optimized="true" style="width:min(42vw,540px)">
-              </picture>
+          <source srcset="img/beez-400.avif 400w,
+                  img/beez-800.avif 800w,
+                  img/beez-1024.avif 1024w" type="image/avif">
+          <source srcset="img/beez-400.webp 400w,
+                  img/beez-800.webp 800w,
+                  img/beez-1024.webp 1024w" type="image/webp">
+          <img src="img/beez-800.png" alt="Beekeeper" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
+        </picture>
             </div>
             <div class="layer" data-speed="0.42" data-rotate="0.05" data-shift="-0.02" style="bottom:10%; right:22%; z-index:5">
               <picture data-optimized="true">
-                <source srcset="img/car-halftone-small-400.avif 400w,
-                        img/car-halftone-small-800-600.avif 600w" type="image/avif">
-                <source srcset="img/car-halftone-small-400.webp 400w,
-                        img/car-halftone-small-800-600.webp 600w" type="image/webp">
-                <img src="img/car-halftone-small-800-600.png" alt="Halftone car" data-optimized="true" style="width:min(42vw,540px)">
-              </picture>
+          <source srcset="img/car-halftone-small-800-400.avif 400w,
+                  img/car-halftone-small-800-600.avif 600w" type="image/avif">
+          <source srcset="img/car-halftone-small-800-400.webp 400w,
+                  img/car-halftone-small-800-600.webp 600w" type="image/webp">
+          <img src="img/car-halftone-small-800-600.png" alt="Halftone car" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
+        </picture>
             </div>
             <div class="layer" data-speed="0.20" data-rotate="0.02" data-shift="0.02" style="top:18%; right:10%; z-index:2">
               <picture data-optimized="true">
-                <source srcset="img/dog-400.avif 400w,
-                        img/dog-800-729.avif 729w" type="image/avif">
-                <source srcset="img/dog-400.webp 400w,
-                        img/dog-800-729.webp 729w" type="image/webp">
-                <img src="img/dog-800-729.png" alt="Dog" data-optimized="true" style="width:min(42vw,540px)">
-              </picture>
+          <source srcset="img/dog-800-400.avif 400w,
+                  img/dog-800-729.avif 729w" type="image/avif">
+          <source srcset="img/dog-800-400.webp 400w,
+                  img/dog-800-729.webp 729w" type="image/webp">
+          <img src="img/dog-800-729.png" alt="Dog" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
+        </picture>
             </div>
             <div class="layer" data-speed="0.14" data-rotate="-0.01" data-shift="-0.015" style="top:8%; right:34%; z-index:0">
               <picture data-optimized="true">
-                <source srcset="img/utopia-400.avif 400w,
-                        img/utopia-800-577.avif 577w" type="image/avif">
-                <source srcset="img/utopia-400.webp 400w,
-                        img/utopia-800-577.webp 577w" type="image/webp">
-                <img src="img/utopia-800-577.png" alt="Utopia" data-optimized="true" style="width:min(42vw,540px)">
-              </picture>
+          <source srcset="img/utopia-800-400.avif 400w,
+                  img/utopia-800-577.avif 577w" type="image/avif">
+          <source srcset="img/utopia-800-400.webp 400w,
+                  img/utopia-800-577.webp 577w" type="image/webp">
+          <img src="img/utopia-800-577.png" alt="Utopia" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
+        </picture>
             </div>
             <div class="layer" data-speed="0.36" data-rotate="0.07" data-shift="-0.04" style="bottom:14%; left:8%; z-index:6">
               <picture data-optimized="true">
-                <source srcset="img/beggar-400.avif 400w,
-                        img/beggar-800-512.avif 512w" type="image/avif">
-                <source srcset="img/beggar-400.webp 400w,
-                        img/beggar-800-512.webp 512w" type="image/webp">
-                <img src="img/beggar-800-512.png" alt="Beggar" data-optimized="true" style="width:min(42vw,540px)">
-              </picture>
+          <source srcset="img/beggar-800-400.avif 400w,
+                  img/beggar-800-512.avif 512w" type="image/avif">
+          <source srcset="img/beggar-800-400.webp 400w,
+                  img/beggar-800-512.webp 512w" type="image/webp">
+          <img src="img/beggar-800-512.png" alt="Beggar" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
+        </picture>
             </div>
             <div class="layer" data-speed="0.24" data-rotate="-0.05" data-shift="0.03" style="top:30%; right:26%; z-index:4">
               <picture data-optimized="true">
-                <source srcset="img/slides-400.avif 400w,
-                        img/slides-800-720.avif 720w" type="image/avif">
-                <source srcset="img/slides-400.webp 400w,
-                        img/slides-800-720.webp 720w" type="image/webp">
-                <img src="img/slides-800-720.png" alt="Slides" data-optimized="true" style="width:min(42vw,540px)">
-              </picture>
+          <source srcset="img/slides-800-400.avif 400w,
+                  img/slides-800-720.avif 720w" type="image/avif">
+          <source srcset="img/slides-800-400.webp 400w,
+                  img/slides-800-720.webp 720w" type="image/webp">
+          <img src="img/slides-800-720.png" alt="Slides" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
+        </picture>
             </div>
             <div class="layer" data-speed="0.18" data-rotate="0.03" data-shift="-0.02" style="top:10%; left:42%; z-index:2">
               <picture data-optimized="true">
-                <source srcset="img/hair-400.avif 400w,
-                        img/hair-800-800.avif 800w" type="image/avif">
-                <source srcset="img/hair-400.webp 400w,
-                        img/hair-800-800.webp 800w" type="image/webp">
-                <img src="img/hair-800-800.png" alt="Hair" data-optimized="true" style="width:min(42vw,540px)">
-              </picture>
+          <source srcset="img/hair-800-400.avif 400w,
+                  img/hair-800-800.avif 800w,
+                  img/hair-800-1170.avif 1170w" type="image/avif">
+          <source srcset="img/hair-800-400.webp 400w,
+                  img/hair-800-800.webp 800w,
+                  img/hair-800-1170.webp 1170w" type="image/webp">
+          <img src="img/hair-800-800.png" alt="Hair" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
+        </picture>
             </div>
             <div class="layer" data-speed="0.30" data-rotate="-0.04" data-shift="0.05" style="top:34%; right:8%; z-index:3">
               <picture data-optimized="true">
-                <source srcset="img/bin-400.avif 400w,
-                        img/bin-800-371.avif 371w" type="image/avif">
-                <source srcset="img/bin-400.webp 400w,
-                        img/bin-800-371.webp 371w" type="image/webp">
-                <img src="img/bin-800-371.png" alt="Bin" data-optimized="true" style="width:min(42vw,540px)">
-              </picture>
+          <source srcset="img/bin-800-371.avif 371w" type="image/avif">
+          <source srcset="img/bin-800-371.webp 371w" type="image/webp">
+          <img src="img/bin-800-371.png" alt="Bin" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
+        </picture>
             </div>
             <div class="layer" data-speed="0.22" data-rotate="0.02" data-shift="0.01" style="bottom:12%; left:54%; z-index:1">
               <picture data-optimized="true">
-                <source srcset="img/bull-400.avif 400w,
-                        img/bull-800-345.avif 345w" type="image/avif">
-                <source srcset="img/bull-400.webp 400w,
-                        img/bull-800-345.webp 345w" type="image/webp">
-                <img src="img/bull-800-345.png" alt="Bull" data-optimized="true" style="width:min(42vw,540px)">
-              </picture>
+          <source srcset="img/bull-800-345.avif 345w" type="image/avif">
+          <source srcset="img/bull-800-345.webp 345w" type="image/webp">
+          <img src="img/bull-800-345.png" alt="Bull" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
+        </picture>
             </div>
           </div>
         </div>
