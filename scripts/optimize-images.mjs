@@ -5,7 +5,8 @@ import sharp from "sharp";
 
 // --- CONFIG ---
 const INPUT_GLOBS = [
-  "../img/**/*.{png,jpg,jpeg}"
+  "../img/**/*.{png,jpg,jpeg}",
+  "../source/texture1.png"
 ];
 
 // Only generate meaningful breakpoints - no more than 3 sizes
@@ -40,16 +41,16 @@ async function processOne(file) {
       continue;
     }
 
-    // Generate AVIF (best compression)
+    // Generate AVIF (best compression) - preserve transparency
     await sharp(buf)
       .resize({ width: targetWidth, withoutEnlargement: true })
-      .avif(AVIF_OPTIONS)
+      .avif({ ...AVIF_OPTIONS, lossless: false })
       .toFile(outPathFor(file, targetWidth, "avif"));
 
-    // Generate WebP (good browser support)
+    // Generate WebP (good browser support) - preserve transparency
     await sharp(buf)
       .resize({ width: targetWidth, withoutEnlargement: true })
-      .webp(WEBP_OPTIONS)
+      .webp({ ...WEBP_OPTIONS, lossless: false })
       .toFile(outPathFor(file, targetWidth, "webp"));
   }
 }
