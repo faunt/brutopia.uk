@@ -16,6 +16,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;line-height:1.6;color:var(--ink);background:#ffffff;font-family:'Special Elite',ui-monospace,'Courier New',monospace}
 body{overflow-x:hidden}
+html{overflow-x:hidden}
 img{max-width:100%;height:auto;display:block}
 a{color:inherit;text-decoration:none}
 button{border:none;background:none;cursor:pointer}
@@ -34,7 +35,7 @@ section{padding:clamp(3rem,8vw,6rem) 0}
 .torn::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent 0%,var(--border-dark) 20%,var(--border-dark) 80%,transparent 100%)}
 .torn::before{content:none}
 
-header{position:relative;min-height:100vh;display:grid;place-items:center;text-align:center;overflow:clip;background:#ffffff}
+header{position:relative;min-height:100vh;display:grid;place-items:center;text-align:center;overflow:hidden;background:#ffffff}
 .hero-copy{position:relative;display:inline-block;padding:14px 22px;border-radius:40px;background:rgba(255,249,220,.72);box-shadow:0 12px 30px rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.3)}
 .badge{display:inline-block;padding:0.375rem 0.625rem;border:1px solid currentColor;border-radius:999px;font-size:0.75rem;letter-spacing:.04em;text-transform:uppercase;color:#5c5243;background:#fff3bd}
 .title{font-size:clamp(2.75rem,8vw,8.75rem);font-style:italic;line-height:.9;margin:0.375rem 0 0.75rem;color:#000;text-shadow:0 0.125rem 0.5rem rgba(255,255,255,.9);letter-spacing:-.01em;font-family:'Zalando Sans',ui-sans-serif,system-ui,-apple-system,sans-serif;text-transform:uppercase}
@@ -45,7 +46,7 @@ header{position:relative;min-height:100vh;display:grid;place-items:center;text-a
 .btn:hover{transform:translateY(-1px)}
 .btn:active{transform:translateY(0.125rem);box-shadow:0 0.125rem 0 #b99d45}
 
-h2{font-size:clamp(1.75rem,3.5vw,3.5rem);line-height:1.05;margin:0 0 1rem;font-family:'Zalando Sans',ui-sans-serif,system-ui,-apple-system,sans-serif;font-style:italic;text-transform:uppercase}
+h2{font-size:clamp(3rem,3.5vw,4rem);line-height:1.05;margin:0 0 1rem;font-family:'Zalando Sans',ui-sans-serif,system-ui,-apple-system,sans-serif;font-style:italic;text-transform:uppercase}
 p,li{font-size:clamp(1rem,1.2vw,1.25rem);font-family:'Special Elite',ui-monospace,'Courier New',monospace;letter-spacing:0.03em;line-height:2rem}
 .muted{opacity:.72}
 
@@ -56,7 +57,7 @@ p,li{font-size:clamp(1rem,1.2vw,1.25rem);font-family:'Special Elite',ui-monospac
 .card.dark{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border:1px dashed rgba(255,255,255,.35)}
 
 /* Parallax hero */
-.parallax-scene{position:absolute;inset:0;pointer-events:none}
+.parallax-scene{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .layer{position:absolute;will-change:transform;filter:drop-shadow(0 12px 24px rgba(0,0,0,.35))}
 .layer img{display:block;max-width:100vw;height:auto}
 #tower-layer .tower-img{max-width:100vw;height:auto;width:auto}
@@ -68,49 +69,49 @@ p,li{font-size:clamp(1rem,1.2vw,1.25rem);font-family:'Special Elite',ui-monospac
 
 /* Collage layer specific sizing */
 .high-school-layer img {
-  max-width: 40vw;
+  max-width: min(40vw, 400px);
 }
 
 .moving-layer img {
-  max-width: 40vw;
+  max-width: min(40vw, 400px);
 }
 
 .paparazzi-layer img {
-  max-width: 30vw;
+  max-width: min(30vw, 300px);
 }
 
 .lounge-layer img {
-  max-width: 40vw;
+  max-width: min(40vw, 400px);
 }
 
 .andrey-shishkin-layer img {
-  max-width: 30vw;
+  max-width: min(30vw, 300px);
 }
 
 /* Mobile overrides for collage layers */
 @media (max-width: 768px) {
   .high-school-layer img {
-    max-width: 80vw;
+    max-width: min(80vw, 320px);
   }
   
   .moving-layer img {
-    max-width: 100vw;
+    max-width: min(100vw, 400px);
   }
   
   .paparazzi-layer img {
-    max-width: 90vw;
+    max-width: min(90vw, 360px);
   }
   
   .lounge-layer img {
-    max-width: 80vw;
+    max-width: min(80vw, 320px);
   }
   
   .andrey-shishkin-layer img {
-    max-width: 70vw;
+    max-width: min(70vw, 280px);
   }
 }
 /* Collage section container */
-.collage-stage{position:relative;height:110vh;overflow:visible}
+.collage-stage{position:relative;height:110vh;overflow:hidden}
 
 /* Mobile overrides for collage section */
 @media (max-width: 768px) {
@@ -232,7 +233,7 @@ img[data-optimized="true"]{transition:opacity .3s ease}
 }
 
 .intro-section img{
-  max-width: 400px; 
+  max-width: min(400px, 90vw); 
   width: 100%; 
   height: auto; 
   box-shadow: 0 12px 30px rgba(0,0,0,.12); /* Slightly softer shadow for neutral theme */
@@ -240,7 +241,7 @@ img[data-optimized="true"]{transition:opacity .3s ease}
 }
 @media (max-width: 768px) {
     .intro-section img{
-      max-width: 300px; /* Smaller on mobile */
+      max-width: min(300px, 85vw); /* Smaller on mobile */
     }
   }
 
@@ -258,6 +259,7 @@ img[data-optimized="true"]{transition:opacity .3s ease}
   max-width: min(200px, 20vw);
   opacity: 0.7;
   z-index: 1;
+  transform: translateX(0);
 }
 
 .intro-section .greggs-halftone img{
@@ -284,7 +286,7 @@ img[data-optimized="true"]{transition:opacity .3s ease}
   
   .intro-section .greggs-halftone {
     right: max(2%, 5px);
-    max-width: min(150px, 30vw);
+    max-width: min(150px, 25vw);
     bottom: 15%;
   }
 }
