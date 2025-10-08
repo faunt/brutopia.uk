@@ -111,13 +111,18 @@ p,li{font-size:clamp(1rem,1.2vw,1.25rem);font-family:'Special Elite',ui-monospac
   }
 }
 /* Collage section container */
-.collage-stage{position:relative;height:110vh;overflow:hidden}
+.collage-stage{position:relative;height:110vh;overflow:visible}
 
 /* Override wrap constraints for collage section */
 #collage .wrap {
   max-width: 100%;
   padding: 0;
   margin: 0;
+}
+
+/* Remove section padding for collage section */
+#collage {
+  padding: 0;
 }
 
 /* Mobile overrides for collage section */
