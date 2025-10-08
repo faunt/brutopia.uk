@@ -58,15 +58,64 @@ p,li{font-size:clamp(1rem,1.2vw,1.25rem);font-family:'Special Elite',ui-monospac
 /* Parallax hero */
 .parallax-scene{position:absolute;inset:0;pointer-events:none}
 .layer{position:absolute;will-change:transform;filter:drop-shadow(0 12px 24px rgba(0,0,0,.35))}
-.layer img{display:block;max-width:80vw;height:auto}
+.layer img{display:block;max-width:100vw;height:auto}
 #tower-layer .tower-img{max-width:100vw;height:auto;width:auto}
 @media (orientation: portrait){
   header{min-height:100vh}
   #tower-layer{top:0}
   #tower-layer .tower-img{width:100vw;height:150vh;object-fit:cover;}
 }
+
+/* Collage layer specific sizing */
+.high-school-layer img {
+  max-width: 40vw;
+}
+
+.moving-layer img {
+  max-width: 40vw;
+}
+
+.paparazzi-layer img {
+  max-width: 30vw;
+}
+
+.lounge-layer img {
+  max-width: 40vw;
+}
+
+.andrey-shishkin-layer img {
+  max-width: 30vw;
+}
+
+/* Mobile overrides for collage layers */
+@media (max-width: 768px) {
+  .high-school-layer img {
+    max-width: 80vw;
+  }
+  
+  .moving-layer img {
+    max-width: 100vw;
+  }
+  
+  .paparazzi-layer img {
+    max-width: 90vw;
+  }
+  
+  .lounge-layer img {
+    max-width: 80vw;
+  }
+  
+  .andrey-shishkin-layer img {
+    max-width: 70vw;
+  }
+}
 /* Collage section container */
 .collage-stage{position:relative;height:150vh;overflow:visible}
+
+/* Mobile overrides for collage section */
+@media (max-width: 768px) {
+    .collage-stage{height:100vh}
+  }
 
 /* CTA band */
 .cta-band{display:grid;place-items:center;text-align:center;padding:42px 0}
@@ -158,7 +207,7 @@ img[data-optimized="true"]{transition:opacity .3s ease}
 }
 
 .intro-section h1{
-  font-size: clamp(8rem, 14vw, 10rem); 
+  font-size: clamp(6rem, 14vw, 12rem); 
   font-style: italic; 
   margin:0;
   font-family: 'Zalando Sans', ui-sans-serif, system-ui, -apple-system, sans-serif; 
@@ -189,6 +238,11 @@ img[data-optimized="true"]{transition:opacity .3s ease}
   box-shadow: 0 12px 30px rgba(0,0,0,.12); /* Slightly softer shadow for neutral theme */
   border-radius: 8px; /* Subtle rounded corners */
 }
+@media (max-width: 768px) {
+    .intro-section img{
+      max-width: 300px; /* Smaller on mobile */
+    }
+  }
 
 /* Intro section parallax layers */
 .intro-layer{
