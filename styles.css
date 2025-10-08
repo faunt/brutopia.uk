@@ -66,7 +66,7 @@ p,li{font-size:clamp(1rem,1.2vw,1.25rem);font-family:'Special Elite',ui-monospac
   #tower-layer .tower-img{width:100vw;height:150vh;object-fit:cover;}
 }
 /* Collage section container */
-.collage-stage{position:relative;height:120vh;overflow:visible}
+.collage-stage{position:relative;height:150vh;overflow:visible}
 
 /* CTA band */
 .cta-band{display:grid;place-items:center;text-align:center;padding:42px 0}
@@ -205,5 +205,12 @@ img[data-optimized="true"]{transition:opacity .3s ease}
   max-width: 100%;
   height: auto;
   border-radius: 4px;
+}
+.right-align {
+  float: right !important;
+  margin-left: 1.5rem !important;
+  margin-right: 0 !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 1rem !important;
 }
 

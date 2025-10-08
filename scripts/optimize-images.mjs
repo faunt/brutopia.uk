@@ -6,7 +6,11 @@ import sharp from "sharp";
 // --- CONFIG ---
 const INPUT_GLOBS = [
   "../img/**/*.{png,jpg,jpeg}",
-  "../source/texture1.png"
+  "../source/texture1.png",
+  "../source/moving.png",
+  "../source/Paparrazi.jpg",
+  "../source/Andrey Shishkin.webp",
+  "../source/lounge.jpeg"
 ];
 
 // Only generate meaningful breakpoints - no more than 3 sizes

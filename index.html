@@ -135,6 +135,7 @@
           <img src="img/leo-800.jpg" alt="Leo Walton" data-optimized="true" class="section-image lightboxable" sizes="(max-width: 800px) 100vw, 800px">
         </picture>
         <p class="image-credit">Leo Walton 2025</p>
+        <br />
         <h2>Bruton is our home</h2>
         <p>Bruton is our home — the sum of our collective experiences, whatever they may be. But there’s a parallel reality: an island paradise hailed as the new Notting Hill; a playground of the rich and famous; a high street idling with Lamborghinis and Range Rovers; mouth‑watering culinary delights at every turn.</p>
         <p>This exhibition holds the two at once: the reality and the illusion, the utopia and the dystopia — and asks, <em>what really is the island paradise of Brutopia?</em></p>
@@ -146,12 +147,71 @@
         <picture data-optimized="true">
           <source srcset="img/golden-400.avif 400w, img/golden-800.avif 800w" type="image/avif">
           <source srcset="img/golden-400.webp 400w, img/golden-800.webp 800w" type="image/webp">
-          <img src="img/golden.jpeg" alt="Golden scene" data-optimized="true" class="section-image lightboxable" sizes="(max-width: 800px) 100vw, 800px">
+          <img src="img/golden.jpeg" alt="Golden scene" data-optimized="true" class="section-image lightboxable right-align" sizes="(max-width: 800px) 100vw, 800px">
         </picture>
         <h2>You the artist</h2>
         <p>We all know what Bruton means to us. But what does the illusion of Bruton mean to you? This exhibition invites you to imagine Brutopia, a parallel reality &amp; satirical reimagining of the island paradise. Does Brutopia live up to the headlines or is it more of a dystopia?</p>
+        <div style="clear: both;"></div>
       </div>
     </section>
+    <!-- COLLAGE (moved below fold, restored parallax) -->
+    <section id="collage" class="tone-paper torn">
+      <div class="wrap">
+        <div class="collage-stage">
+          <div class="parallax-scene" aria-hidden="true">
+            <!-- high school -->
+            <div class="layer" data-speed="0.01" data-rotate="-0.01" data-shift="-0.1" style="top:6%; left:4%; z-index:2">
+              <picture data-optimized="true">
+          <source srcset="img/high-school-400.avif 400w,
+                  img/high-school-800.avif 800w" type="image/avif">
+          <source srcset="img/high-school-400.webp 400w,
+                  img/high-school-800.webp 800w" type="image/webp">
+          <img src="img/high-school.png" alt="High school" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
+        </picture>
+            </div>
+            <!-- moving -->
+            <div class="layer" data-speed="0.02" data-rotate="0.01" data-shift="0.1" style="top:20%; left:50%; z-index:1">
+              <picture data-optimized="true">
+          <source srcset="img/moving-400.avif 400w,
+                  img/moving-800.avif 800w" type="image/avif">
+          <source srcset="img/moving-400.webp 400w,
+                  img/moving-800.webp 800w" type="image/webp">
+          <img src="img/moving.png" alt="Moving" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
+        </picture>
+            </div>
+            <!-- paparazzi -->
+            <div class="layer" data-speed="0.28" data-rotate="0.07" data-shift="-0.03" style="top:4%; right:16%; z-index:1">
+              <picture data-optimized="true">
+          <source srcset="img/Paparrazi-400.avif 400w,
+                  img/Paparrazi-800.avif 800w" type="image/avif">
+          <source srcset="img/Paparrazi-400.webp 400w,
+                  img/Paparrazi-800.webp 800w" type="image/webp">
+          <img src="img/Paparrazi.jpg" alt="Paparazzi" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
+        </picture>
+            </div>
+            <!-- lounge -->
+            <div class="layer" data-speed="0.01" data-rotate="0.1" data-shift="-0.02" data-basescale="0.5" style="top:1%; left:30%; z-index:5">
+              <picture data-optimized="true">
+          <source srcset="img/lounge-400.avif 400w,
+                  img/lounge-800.avif 800w" type="image/avif">
+          <source srcset="img/lounge-400.webp 400w,
+                  img/lounge-800.webp 800w" type="image/webp">
+          <img src="img/lounge.jpeg" alt="Lounge" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
+        </picture>
+            </div>
+            <!-- andrey shishkin -->
+            <div class="layer" data-basescale="0.5" data-speed="0.20" data-rotate="0.02" data-shift="0.15" style="top:18%; right:10%; z-index:2">
+              <picture data-optimized="true">
+          <source srcset="img/andrey-shishkin-400.avif 400w" type="image/avif">
+          <source srcset="img/andrey-shishkin-400.webp 400w" type="image/webp">
+          <img src="img/andrey-shishkin.webp" alt="Andrey Shishkin" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
+        </picture>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- UTOPIA / HISTORY -->
     <section id="utopia" class="tone-news torn">
       <div class="wrap">
@@ -163,113 +223,9 @@
           <img src="img/utopia-800-577.png" alt="Utopia illustration" data-optimized="true" class="section-image lightboxable" sizes="(max-width: 800px) 100vw, 800px">
         </picture>
         <h2>The History Bit</h2>
-        <p>In 1516 Thomas More, High Chancellor to Henry VIll, published a book called <em>‘Utopia’</em>, an imagined fictional island in which everything was <b>“perfect”</b>. More's <em>Utopia</em> was a <b>socio-political satire</b>. The book depicts a fictional island society and its religious, social and political <b>customs</b>.</p>
+        <p>In 1516 Thomas More, High Chancellor to Henry VIll, published a book called <em>'Utopia'</em>, an imagined fictional island in which everything was <b>"perfect"</b>. More's <em>Utopia</em> was a <b>socio-political satire</b>. The book depicts a fictional island society and its religious, social and political <b>customs</b>.</p>
         <p>On the island - pleasure, practice of spiritual virtues &amp; living according to nature are all held in the highest regard. There are several religions on the island: <b>moon-worshippers, sun-worshippers, planet-worshippers, ancestor-worshippers</b> and monotheists, each is tolerant of the others.</p>
         <p>However, More's Utopia popularised the idea of imagining <b>parallel realities</b>. Every utopia contains a dystopia, an illusion where nothing is perfect.</p>
-      </div>
-    </section>
-
-    <!-- COLLAGE (moved below fold, restored parallax) -->
-    <section id="collage" class="tone-paper torn">
-      <div class="wrap">
-        <div class="collage-stage">
-          <div class="parallax-scene" aria-hidden="true">
-            <div class="layer" data-speed="0.30" data-rotate="0.10" data-shift="0.04" style="top:25%; left:50%; transform:translateX(-50%); z-index:10">
-              <picture data-optimized="true">
-          <source srcset="img/brutopia-400.avif 400w,
-                  img/brutopia-800.avif 800w,
-                  img/brutopia-1200.avif 1200w,
-                  img/brutopia-1536.avif 1536w" type="image/avif">
-          <source srcset="img/brutopia-400.webp 400w,
-                  img/brutopia-800.webp 800w,
-                  img/brutopia-1200.webp 1200w,
-                  img/brutopia-1536.webp 1536w" type="image/webp">
-          <img src="img/brutopia-800.png" alt="Brutopia collage" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
-        </picture>
-            </div>
-            <div class="layer" data-speed="0.10" data-rotate="-0.02" data-shift="-0.01" style="top:6%; left:4%; z-index:1">
-              <picture data-optimized="true">
-          <source srcset="img/rainbow-400.avif 400w,
-                  img/rainbow-750.avif 750w" type="image/avif">
-          <source srcset="img/rainbow-400.webp 400w,
-                  img/rainbow-750.webp 750w" type="image/webp">
-          <img src="img/rainbow-750.png" alt="Rainbow" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
-        </picture>
-            </div>
-            <div class="layer" data-speed="0.52" data-rotate="0.06" data-shift="0.06" style="bottom:8%; left:30%; z-index:4">
-              <picture data-optimized="true">
-          <img src="img/california.png" alt="California" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
-        </picture>
-            </div>
-            <div class="layer" data-speed="0.28" data-rotate="-0.03" data-shift="-0.03" style="top:24%; left:16%; z-index:3">
-              <picture data-optimized="true">
-          <img src="img/beez.png" alt="Beekeeper" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
-        </picture>
-            </div>
-            <div class="layer" data-speed="0.42" data-rotate="0.05" data-shift="-0.02" style="bottom:10%; right:22%; z-index:5">
-              <picture data-optimized="true">
-          <source srcset="img/car-halftone-small-800-400.avif 400w,
-                  img/car-halftone-small-800-600.avif 600w" type="image/avif">
-          <source srcset="img/car-halftone-small-800-400.webp 400w,
-                  img/car-halftone-small-800-600.webp 600w" type="image/webp">
-          <img src="img/car-halftone-small-800-600.png" alt="Halftone car" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
-        </picture>
-            </div>
-            <div class="layer" data-speed="0.20" data-rotate="0.02" data-shift="0.02" style="top:18%; right:10%; z-index:2">
-              <picture data-optimized="true">
-          <source srcset="img/dog-800-400.avif 400w,
-                  img/dog-800-729.avif 729w" type="image/avif">
-          <source srcset="img/dog-800-400.webp 400w,
-                  img/dog-800-729.webp 729w" type="image/webp">
-          <img src="img/dog-800-729.png" alt="Dog" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
-        </picture>
-            </div>
-            <div class="layer" data-speed="0.14" data-rotate="-0.01" data-shift="-0.015" style="top:8%; right:34%; z-index:0">
-              <picture data-optimized="true">
-          <source srcset="img/utopia-800-400.avif 400w,
-                  img/utopia-800-577.avif 577w" type="image/avif">
-          <source srcset="img/utopia-800-400.webp 400w,
-                  img/utopia-800-577.webp 577w" type="image/webp">
-          <img src="img/utopia-800-577.png" alt="Utopia" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
-        </picture>
-            </div>
-            <div class="layer" data-speed="0.36" data-rotate="0.07" data-shift="-0.04" style="bottom:14%; left:8%; z-index:6">
-              <picture data-optimized="true">
-          <img src="img/beggar.png" alt="Beggar" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
-        </picture>
-            </div>
-            <div class="layer" data-speed="0.24" data-rotate="-0.05" data-shift="0.03" style="top:30%; right:26%; z-index:4">
-              <picture data-optimized="true">
-          <source srcset="img/slides-800-400.avif 400w,
-                  img/slides-800-720.avif 720w" type="image/avif">
-          <source srcset="img/slides-800-400.webp 400w,
-                  img/slides-800-720.webp 720w" type="image/webp">
-          <img src="img/slides-800-720.png" alt="Slides" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
-        </picture>
-            </div>
-            <div class="layer" data-speed="0.18" data-rotate="0.03" data-shift="-0.02" style="top:10%; left:42%; z-index:2">
-              <picture data-optimized="true">
-          <source srcset="img/hair-800-400.avif 400w,
-                  img/hair-800-800.avif 800w,
-                  img/hair-800-1170.avif 1170w" type="image/avif">
-          <source srcset="img/hair-800-400.webp 400w,
-                  img/hair-800-800.webp 800w,
-                  img/hair-800-1170.webp 1170w" type="image/webp">
-          <img src="img/hair-800-800.png" alt="Hair" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
-        </picture>
-            </div>
-            <div class="layer" data-speed="0.30" data-rotate="-0.04" data-shift="0.05" style="top:34%; right:8%; z-index:3">
-              <picture data-optimized="true">
-          <img src="img/bin.png" alt="Bin" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
-        </picture>
-            </div>
-            <div class="layer" data-speed="0.22" data-rotate="0.02" data-shift="0.01" style="bottom:12%; left:54%; z-index:1">
-              <picture data-optimized="true">
-          <img src="img/bull.png" alt="Bull" data-optimized="true" sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 60vw">
-        </picture>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
