@@ -110,7 +110,7 @@ p,li{font-size:clamp(1rem,1.2vw,1.25rem);font-family:'Special Elite',ui-monospac
   }
 }
 /* Collage section container */
-.collage-stage{position:relative;height:150vh;overflow:visible}
+.collage-stage{position:relative;height:110vh;overflow:visible}
 
 /* Mobile overrides for collage section */
 @media (max-width: 768px) {

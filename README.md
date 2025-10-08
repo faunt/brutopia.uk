@@ -26,7 +26,7 @@ An open call to play with Bruton's parallel reality: utopia vs. dystopia. Contri
 
 #### Text Content
 - [ ] **Welcome to Brutopia** - Finalize opening message for the site
-- [ ] **"Does Brutopia live up to the headlines... what's your Brutopia?"** - Integrate this key question into the site
+- [x] **"Does Brutopia live up to the headlines... what's your Brutopia?"** - Integrate this key question into the site
 - [ ] **"Bruton - Our home"** - Ensure this sentiment is properly expressed
 - [ ] **"TAKING THE TEMPERATURE OF THE COMMUNITY"** - Develop this section concept
 - [ ] **Medium diversity** - Determine if different mediums should be explicitly mentioned:
