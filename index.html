@@ -155,7 +155,7 @@
       </div>
     </section>
     <!-- COLLAGE (moved below fold, restored parallax) -->
-    <section id="collage" class="tone-paper torn">
+    <section id="collage" class="tone-paper">
       <div class="wrap">
         <div class="collage-stage">
           <div class="layer"  data-speed="0.01" data-rotate="0" data-shift="0" style="bottom:15%; left:30%; z-index:1"><h2>What’s your "Brutopia"?</h2></div>
@@ -235,23 +235,11 @@
     </section>
 
     <!-- PROMPTS -->
-    <section id="prompts" class="tone-cyan torn">
+    <section id="prompts" class="tone-cyan">
       <div class="wrap">
         <h2>Different types of Utopia?</h2>
         <p>More's book, in some ways a work of early science fiction, gave rise to a whole new genre of writing. Judging from that literature, there are really two kinds of utopia. There are carnivalesque societies in which, instead of working, everyone will drink, feast and copulate from dawn to dusk.</p>
         <p>There are also more austere utopias, in which everything is odourless and antiseptic, intolerably streamlined and sensible.</p>
-      </div>
-    </section>
-
-    <!-- CTA BAND -->
-    <section class="tone-tomato">
-      <div class="wrap">
-        <h2>The challenge</h2>
-        <p>If you have a quip/idea/drawing/joke/blockbuster/advert/song that you would like to contribute as part of the 'Brutopia' exhibition, then....</p>
-          <ul><li>You don't have to be an artist.</li>
-          <li>You don't have to be a philosopher.</li>
-          <li>You just have to have an idea of Brutopia.</li></ul>
-        <a class="btn" href="#contribute">Contribute to Brutopia</a>
       </div>
     </section>
 
@@ -277,8 +265,12 @@
     </section>
 
     <!-- CONTRIBUTE (no Credits per your note) -->
-    <section id="contribute" class="tone-ink torn">
+    <section id="contribute" class="tone-ink">
       <div class="wrap">
+        <video id="neon-video" class="section-image" muted playsinline preload="auto">
+          <source src="source/sign.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
         <h2>Contribute to Brutopia</h2>
         <p class="muted">Send a link, upload, or a rough sketch. We’ll be in touch.</p>
         <p>Email: <a href="mailto:submit@brutopia.uk" style="text-decoration:underline; color:#fff">submit@brutopia.uk</a></p>
@@ -286,7 +278,7 @@
     </section>
   </main>
 
-  <footer>
+  <footer class="tone-ink">
     <div class="wrap">© <span id="year"></span> Brutopia</div>
   </footer>
 
@@ -406,6 +398,68 @@
       lbClose.addEventListener('click', close);
       lb.addEventListener('click', (e)=>{ if(e.target === lb) close(); });
       addEventListener('keydown', (e)=>{ if(e.key === 'Escape') close(); });
+    })();
+
+    // Scroll-controlled video playback
+    (function(){
+      const video = document.getElementById('neon-video');
+      if(!video) return;
+      
+      let isVideoReady = false;
+      let lastScrollTime = 0;
+      
+      const onScroll = () => {
+        if(!isVideoReady) return;
+        
+        const now = Date.now();
+        if(now - lastScrollTime < 16) return; // Throttle to ~60fps
+        lastScrollTime = now;
+        
+        requestAnimationFrame(() => {
+          const scrollY = window.scrollY || window.pageYOffset;
+          const contributeSection = document.getElementById('contribute');
+          if(!contributeSection) return;
+          
+          const sectionTop = contributeSection.offsetTop;
+          const sectionHeight = contributeSection.offsetHeight;
+          const windowHeight = window.innerHeight;
+          
+          // Calculate when the video section is in view
+          const videoStart = sectionTop - windowHeight;
+          const videoEnd = sectionTop + sectionHeight;
+          
+          // Only control video when section is in viewport
+          if(scrollY >= videoStart && scrollY <= videoEnd) {
+            // Calculate progress through the video section (0 to 1)
+            const progress = Math.max(0, Math.min(1, (scrollY - videoStart) / (videoEnd - videoStart)));
+            
+            // Set video time based on scroll progress (2x speed, capped at duration)
+            if(video.duration && !isNaN(video.duration)) {
+              const targetTime = Math.min((progress * video.duration) * 2, video.duration);
+              // Only update if the change is significant enough to avoid micro-stutters
+              if(Math.abs(video.currentTime - targetTime) > 0.1) {
+                video.currentTime = targetTime;
+              }
+            }
+          }
+        });
+      };
+      
+      // Wait for video to load metadata before enabling scroll control
+      video.addEventListener('loadedmetadata', () => {
+        isVideoReady = true;
+        addEventListener('scroll', onScroll, {passive: true});
+        onScroll(); // Initial call
+      });
+      
+      // Fallback: if metadata doesn't load, still try to enable after a delay
+      setTimeout(() => {
+        if(video.duration && !isNaN(video.duration)) {
+          isVideoReady = true;
+          addEventListener('scroll', onScroll, {passive: true});
+          onScroll();
+        }
+      }, 1000);
     })();
 
   </script>
