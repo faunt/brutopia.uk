@@ -9,10 +9,10 @@ An open call to play with Bruton's parallel reality: utopia vs. dystopia. Contri
 #### Imagery Collection
 - [x] **Leo's picture** - Source and integrate portrait imagery
 - [x] **Greggs brand / sausage roll** - Obtain branded imagery or create satirical representation
-- [ ] **Colour pic of a Ferrari / Lamborghini** - Source luxury car imagery for the "playground of the rich and famous" theme
+- [x] **Colour pic of a Ferrari / Lamborghini** - Source luxury car imagery for the "playground of the rich and famous" theme
 - [ ] **Michelin stars** - Find or create imagery representing high-end dining
-- [ ] **For Sale signs** - Source real estate signage imagery
-- [ ] **Range Rovers** - Collect luxury SUV imagery to complement the car theme
+- [x] **For Sale signs** - Source real estate signage imagery
+- [x] **Range Rovers** - Collect luxury SUV imagery to complement the car theme
 - [x] **Reference to worship** - Research and integrate Slavic mythology references from [Culture Frontier](https://www.culturefrontier.com/slavic-mythology/)
 - [ ] **Montecito sign** - Source or recreate sign imagery from [eBay listing](https://www.ebay.co.uk/itm/156385163508)
 - [ ] **Fancy food dishes** - Collect high-end restaurant imagery from:
@@ -20,7 +20,7 @@ An open call to play with Bruton's parallel reality: utopia vs. dystopia. Contri
   - [KimKim Luxury Dining Tour](https://www.kimkim.com/c/luxury-nature-fine-dining-tour-australia-10-days)
 - [x] **Locals go home cartoon** - Source cartoon imagery from [CartoonStock](https://www.cartoonstock.com/cartoon?searchID=CS252315)
 - [ ] **House prices rise** - Find rising house prices graph imagery from [Dreamstime](https://www.dreamstime.com/stock-photos-house-prices-going-up-illustrated-graph-image27543453)
-- [ ] **Moving van** - Source moving company imagery from [1st Formations](https://www.1stformations.co.uk/blog/move-company-from-another-country-to-the-uk/)
+- [x] **Moving van** - Source moving company imagery from [1st Formations](https://www.1stformations.co.uk/blog/move-company-from-another-country-to-the-uk/)
 - [ ] **George Osborne** - Find rollercoaster imagery from [The Guardian](https://www.theguardian.com/commentisfree/picture/2015/mar/22/george-osborne-rollercoaster-riddell)
 - [x] **Golden dustbin** - Source luxury trash can imagery from [Shutterstock](https://www.shutterstock.com/image-illustration/gold-trash-can-58111018)
 
@@ -37,15 +37,15 @@ An open call to play with Bruton's parallel reality: utopia vs. dystopia. Contri
   - [ ] Other formats
 
 ### 🛠️ Technical Tasks
-- [ ] **Image optimization** - Ensure all new imagery is properly optimized using the existing `optimize-images.mjs` script
-- [ ] **Responsive design** - Test all new imagery across different screen sizes
+- [x] **Image optimization** - Ensure all new imagery is properly optimized using the existing `optimize-images.mjs` script
+- [x] **Responsive design** - Test all new imagery across different screen sizes
 - [ ] **Accessibility** - Add proper alt text for all new imagery
 - [ ] **Performance** - Optimize loading times for additional content
 - [ ] **Email forwarding** - Review and configure email forwarding for @brutopia.uk addresses (submit@brutopia.uk, etc.)
 
 ### 📋 Content Integration
-- [ ] **Review existing content** - Ensure new imagery and text complement the current site structure
-- [ ] **Update parallax layers** - Integrate new imagery into the existing parallax system
+- [x] **Review existing content** - Ensure new imagery and text complement the current site structure
+- [x] **Update parallax layers** - Integrate new imagery into the existing parallax system
 - [ ] **Maintain visual consistency** - Ensure new content fits the "yellowed-magazine" aesthetic
 - [ ] **Update meta descriptions** - Refresh SEO content if needed
 
