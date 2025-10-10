@@ -10,7 +10,9 @@ const INPUT_GLOBS = [
   "../source/moving.png",
   "../source/Paparrazi.jpg",
   "../source/Andrey Shishkin.webp",
-  "../source/lounge.jpeg"
+  "../source/lounge.jpeg",
+  "../source/neon brown.png",
+  "../source/fav.png"
 ];
 
 // Only generate meaningful breakpoints - no more than 3 sizes

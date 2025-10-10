@@ -3,7 +3,7 @@
   --ink: #11110f;
   --paper: #f3eddc; /* brighter base */
   --tone-paper: #f3eddc;
-  --tone-ink: #6E4B2F;
+  --tone-ink: #6E4B2F; /* Desktop - matches MP4 video */
   --accent: #d4b85a;
   --accent-dark: #b99d45;
   --accent-light: #fff3bd;
@@ -159,6 +159,30 @@ video.section-image {
   object-fit: cover;
   border: none;
   outline: none;
+}
+
+/* Show/hide video vs image based on screen size */
+.desktop-only {
+  display: block;
+}
+
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none;
+  }
+  
+  .mobile-only {
+    display: block;
+  }
+  
+  /* Mobile - matches PNG image */
+  :root {
+    --tone-ink: #63412D;
+  }
 }
 
 /* Hide video controls and overlays completely */

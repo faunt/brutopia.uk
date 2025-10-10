@@ -8,7 +8,7 @@
   <meta property="og:type" content="website">
   <meta property="og:image" content="img/brutopia.png">
   <meta name="theme-color" content="#ffffff">
-  <link rel="icon" href="img/brutopia.png">
+  <link rel="icon" href="img/fav.png">
   <link href="https://fonts.googleapis.com/css2?family=Special+Elite&amp;display=swap" rel="stylesheet">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Zalando+Sans:wdth@75..125&display=swap');
@@ -267,10 +267,20 @@
     <!-- CONTRIBUTE (no Credits per your note) -->
     <section id="contribute" class="tone-ink">
       <div class="wrap">
-        <video id="neon-video" class="section-image" muted playsinline preload="auto">
+        <!-- Desktop: Scroll-controlled video -->
+        <video id="neon-video" class="section-image desktop-only" muted playsinline preload="auto">
           <source src="source/sign.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
+        
+        <!-- Mobile: Static image fallback -->
+        <picture class="section-image mobile-only" data-optimized="true">
+          <source srcset="img/neon brown-400.avif 400w,
+                  img/neon brown-800.avif 800w" type="image/avif">
+          <source srcset="img/neon brown-400.webp 400w,
+                  img/neon brown-800.webp 800w" type="image/webp">
+          <img src="img/neon brown.png" alt="Neon brown" data-optimized="true" sizes="(max-width: 800px) 100vw, 800px">
+        </picture>
         <h2>Contribute to Brutopia</h2>
         <p class="muted">Send a link, upload, or a rough sketch. We’ll be in touch.</p>
         <p>Email: <a href="mailto:submit@brutopia.uk" style="text-decoration:underline; color:#fff">submit@brutopia.uk</a></p>
@@ -400,10 +410,13 @@
       addEventListener('keydown', (e)=>{ if(e.key === 'Escape') close(); });
     })();
 
-    // Scroll-controlled video playback
+    // Scroll-controlled video playback (desktop only)
     (function(){
       const video = document.getElementById('neon-video');
-      if(!video) return;
+      if(!video) return; // Exit if video element doesn't exist (mobile)
+      
+      // Check if we're on mobile - if so, don't initialize video controls
+      if(window.innerWidth <= 768) return;
       
       let isVideoReady = false;
       let lastScrollTime = 0;
