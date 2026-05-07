@@ -476,6 +476,8 @@ img[data-optimized="true"]{transition:opacity .3s ease}
   }
 
   .artworks-table{
+    --price-list-label-width:4.25rem;
+    --price-list-label-gap:.7rem;
     min-width:0;
     border-collapse:separate;
     border-spacing:0;
@@ -510,7 +512,7 @@ img[data-optimized="true"]{transition:opacity .3s ease}
 
   .artworks-table tbody th{
     width:auto;
-    padding:0 0 .6rem;
+    padding:0 0 .6rem calc(var(--price-list-label-width) + var(--price-list-label-gap));
     border:0;
     font-size:1.28rem;
     line-height:1.18;
@@ -518,8 +520,8 @@ img[data-optimized="true"]{transition:opacity .3s ease}
 
   .artworks-table td{
     display:grid;
-    grid-template-columns:minmax(5.75rem,34%) 1fr;
-    gap:.75rem;
+    grid-template-columns:var(--price-list-label-width) minmax(0,1fr);
+    column-gap:var(--price-list-label-gap);
     padding:.26rem 0;
     border:0;
     line-height:1.28;
@@ -561,5 +563,12 @@ img[data-optimized="true"]{transition:opacity .3s ease}
   .cell-note{
     grid-column:2;
     font-weight:400;
+  }
+}
+
+@media (max-width: 380px){
+  .artworks-table{
+    --price-list-label-width:3.9rem;
+    --price-list-label-gap:.55rem;
   }
 }
