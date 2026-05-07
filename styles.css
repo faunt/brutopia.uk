@@ -520,6 +520,7 @@ img[data-optimized="true"]{transition:opacity .3s ease}
 
   .artworks-table td{
     display:grid;
+    align-items:baseline;
     grid-template-columns:var(--price-list-label-width) minmax(0,1fr);
     column-gap:var(--price-list-label-gap);
     padding:.26rem 0;
